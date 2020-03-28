@@ -1,0 +1,57 @@
+{
+  "name": "highest-template",
+  "version": "1.0.0",
+  "description": "🧗‍ Vue.js template used by Highest",
+  "homepage": "https://github.com/highest-app/template",
+  "keywords": [
+    "vuejs",
+    "vuetify",
+    "template"
+  ],
+  "licenses": [
+    {
+      "name": "GPL-3.0",
+      "url": "https://github.com/highest-app/template/blob/master/LICENSE"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Exybore",
+      "email": "exybore@becauseofprog.fr",
+      "web": "https://exybore.becauseofprog.fr"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/highest-app/template.git"
+    }
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@mdi/font": "^3.6.95",
+    "core-js": "^2.6.5",
+    "register-service-worker": "^1.6.2",
+    "roboto-fontface": "*",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-plugin-pwa": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-vuetify": "^2.0.5",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
