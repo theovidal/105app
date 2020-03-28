@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import myModule from './modules/myModule'
+import files from './modules/files'
+import subjects from './modules/subjects'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ const mutations = {}
 const actions = {}
 
 const modules = {
-  myModule
+  files,
+  subjects
 }
 
 export default new Vuex.Store({ state, getters, mutations, actions, modules })
