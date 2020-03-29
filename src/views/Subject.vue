@@ -1,7 +1,10 @@
 <template>
   <main>
+    <top-banner
+      :title="subject.name"
+      :icon="subject.icon"
+      :color="subject.color"/>
     <v-container>
-      <h1>{{ subject.name }} - Toutes les fiches</h1>
       <v-row>
         <v-col
           v-for="file in files"
@@ -11,11 +14,8 @@
           sm="4"
           lg="3">
           <file-card
-            :title="file.name"
-            :subtitle="subject.name"
-            :icon="subject.icon"
-            :description="file.description"
-            :link="`/subjects/${subject.slug}/${file.slug}`"/>
+            :file="file"
+            :subject="subject"/>
         </v-col>
       </v-row>
     </v-container>
@@ -25,10 +25,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import FileCard from './parts/FileCard'
+import TopBanner from './parts/TopBanner'
 
 export default {
   name: 'Subject',
-  components: { FileCard },
+  components: { FileCard, TopBanner },
   data () {
     return {
       subject: {},
@@ -41,6 +42,11 @@ export default {
   },
   computed: {
     ...mapGetters(['getSubjectBySlug', 'getFilesBySubject'])
+  },
+  metaInfo () {
+    return {
+      title:`${this.subject.name} : Toutes les fiches | 105`
+    }
   }
 }
 </script>

@@ -44,6 +44,9 @@ export default {
         },
       ]
     }
+  },
+  metaInfo: {
+    title: '105'
   }
-};
+}
 </script>

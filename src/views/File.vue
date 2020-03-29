@@ -13,37 +13,51 @@
         <v-slider
           v-model="zoom"
           style="height: 30px"
-          min="0"
+          min="10"
           max="100"/>
       </template>
       <template v-else>
+        <v-tooltip
+          bottom
+          open-delay="500">
+          <template #activator="{ on }">
+            <v-btn
+              icon
+              v-on="on"
+              @click="zoomMenu = true">
+              <v-icon>mdi-magnify-plus-outline</v-icon>
+            </v-btn>
+          </template>
+          <span>Niveau de zoom</span>
+        </v-tooltip>
         <v-dialog
           v-model="infoDialog"
           width="500">
-          <template v-slot:activator="{ on }">
-            <div v-on="on">
-              <v-tooltip
-                right>
-                <template #activator="{ on }">
-                  <v-btn
-                    icon
-                    v-on="on">
-                    <v-icon>mdi-information-outline</v-icon>
-                  </v-btn>
-                </template>
-                <span>Informations</span>
-              </v-tooltip>
-            </div>
+          <template v-slot:activator="{ on: dialog }">
+            <v-tooltip
+              bottom
+              open-delay="500">
+              <template #activator="{ on: tooltip }">
+                <v-btn
+                  icon
+                  v-on="{ ...tooltip, ...dialog }">
+                  <v-icon>mdi-information-outline</v-icon>
+                </v-btn>
+              </template>
+              <span>Informations</span>
+            </v-tooltip>
           </template>
           <v-card>
             <v-card-text class="pt-4">
               <strong>Nom : </strong>{{ file.name }}<br>
 
-              <strong>Description : </strong>{{ file.description }}<br>
+              <strong>Description : </strong><span v-html="file.description"/><br>
 
-              <strong>Matière : </strong>
-              <v-icon>{{ subject.icon }}</v-icon>
-              {{ subject.name }}<br>
+              <strong>Ajoutée le : </strong>{{ dateToText(file.added) }}<br>
+
+              <strong>Niveau (indicatif) : </strong>{{ file.level }}<br>
+
+              <strong>Matière : </strong><v-icon>{{ subject.icon }}</v-icon> {{ subject.name }}<br>
             </v-card-text>
 
             <v-divider/>
@@ -59,35 +73,45 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
-        <v-tooltip
-          bottom>
-          <template #activator="{ on }">
-            <v-btn
-              icon
-              v-on="on"
-              @click="zoomMenu = true">
-              <v-icon>mdi-magnify-plus-outline</v-icon>
-            </v-btn>
-          </template>
-          <span>Niveau de zoom</span>
-        </v-tooltip>
         <v-spacer/>
-        <v-tooltip
-          left>
-          <template #activator="{ on }">
-            <v-btn
-              :href="url"
-              target="_blank"
-              icon
-              v-on="on">
-              <v-icon>mdi-download-outline</v-icon>
-            </v-btn>
+        <v-menu
+          transition="slide-y-transition"
+          bottom>
+          <template #activator="{ on: menu }">
+            <v-tooltip
+              left
+              open-delay="500">
+              <template #activator="{ on: tooltip }">
+                <v-btn
+                  icon
+                  v-on="{...tooltip, ...menu }">
+                  <v-icon>mdi-download-outline</v-icon>
+                </v-btn>
+              </template>
+              <span>Télécharger</span>
+            </v-tooltip>
           </template>
-          <span>Télécharger</span>
-        </v-tooltip>
+          <v-list>
+            <v-list-item
+              v-for="format in file.formats"
+              :key="format"
+              :href="url + format"
+              target="_blank">
+              <v-list-item-icon>
+                <v-icon>
+                  {{ formats[format].icon }}
+                </v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>{{ formats[format].name }} (.{{ format }})</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
       </template>
     </v-app-bar>
-    <v-row justify="center">
+    <v-row
+      style="min-height: 85vh"
+      justify="center">
       <pdf
         v-for="i in numPages"
         :key="i"
@@ -95,7 +119,7 @@
         :page="i"
         :style="style"/>
     </v-row>
-    <v-footer>
+    <v-footer class="background">
       <v-spacer/>
       <div>&copy; {{ new Date().getFullYear() }}, Théo Vidal</div>
     </v-footer>
@@ -105,6 +129,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import pdf from 'vue-pdf'
+import formats from '@/data/formats'
+import { dateToText } from '@/utils/parsing'
 
 export default {
   name: 'File',
@@ -120,15 +146,17 @@ export default {
       numPages: undefined,
 
       zoomMenu: false,
-      infoDialog: false
+      infoDialog: false,
+
+      formats
     }
   },
   mounted () {
     this.subject = this.getSubjectBySlug(this.$route.params.subject)
-    this.file = this.getFileBySlug(this.$route.params.file)
-    this.url = `/files/${this.subject.slug}/${this.file.slug}.pdf`
+    this.file = this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
+    this.url = `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
 
-    this.src = pdf.createLoadingTask(this.url)
+    this.src = pdf.createLoadingTask(this.url + 'pdf')
 
     this.src.then(pdf => {
       this.numPages = pdf.numPages;
@@ -139,10 +167,14 @@ export default {
     style () {
       return `width: ${this.zoom}%`
     }
+  },
+  methods: {
+    dateToText
+  },
+  metaInfo () {
+    return {
+      title:`${this.subject.name} : ${this.file.name} | 105`
+    }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
