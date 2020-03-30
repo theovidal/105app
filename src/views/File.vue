@@ -131,6 +131,7 @@ import { mapGetters } from 'vuex'
 import pdf from 'vue-pdf'
 import formats from '@/data/formats'
 import { dateToText } from '@/utils/parsing'
+import { getHexa } from '../utils/color'
 
 export default {
   name: 'File',
@@ -173,7 +174,25 @@ export default {
   },
   metaInfo () {
     return {
-      title:`${this.subject.name} : ${this.file.name} | 105`
+      title:`${this.subject.name} : ${this.file.name} | 105`,
+      meta: [
+        {
+          property: 'og:title',
+          content: `${this.subject.name} : ${this.file.name}`
+        },
+        {
+          property: 'og:description',
+          content: this.file.description
+        },
+        {
+          property: 'og:url',
+          content: `https://105app.exybo.re/subjects/${this.subject.slug}/${this.file.slug}`
+        },
+        {
+          name: 'theme-color',
+          content: getHexa(this.subject.color)
+        }
+      ]
     }
   }
 }

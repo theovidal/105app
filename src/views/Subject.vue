@@ -26,6 +26,7 @@
 import { mapGetters } from 'vuex'
 import FileCard from './parts/FileCard'
 import TopBanner from './parts/TopBanner'
+import { getHexa } from '../utils/color'
 
 export default {
   name: 'Subject',
@@ -45,7 +46,25 @@ export default {
   },
   metaInfo () {
     return {
-      title:`${this.subject.name} : Toutes les fiches | 105`
+      title:`${this.subject.name} : Toutes les fiches | 105`,
+      meta: [
+        {
+          property: 'og:title',
+          content: `${this.subject.name} : Toutes les fiches`
+        },
+        {
+          property: 'og:description',
+          content: `Accédez aux fiches de révision en ${this.subject.name}`
+        },
+        {
+          property: 'og:url',
+          content: `https://105app.exybo.re/subjects/${this.subject.slug}`
+        },
+        {
+          name: 'theme-color',
+          content: getHexa(this.subject.color)
+        }
+      ]
     }
   }
 }

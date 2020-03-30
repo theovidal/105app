@@ -20,7 +20,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data () {
@@ -45,8 +44,28 @@ export default {
       ]
     }
   },
-  metaInfo: {
-    title: '105'
+  metaInfo () {
+    return {
+      title: "105 - L'appli",
+      meta: [
+        {
+          property: 'og:title',
+          content: "105 - L'appli"
+        },
+        {
+          property: 'og:description',
+          content: 'Les fiches de révision pratiques'
+        },
+        {
+          property: 'og:url',
+          content: 'https://105app.exybo.re'
+        },
+        {
+          name: 'theme-color',
+          content: '#79b63d'
+        }
+      ]
+    }
   }
 }
 </script>
