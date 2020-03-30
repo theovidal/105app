@@ -8,18 +8,18 @@
               cols="12"
               md="6">
               <v-text-field
-                v-model="search"
+                v-model="query"
                 label="Recherche..."
                 outlined>
                 <template
-                  v-if="search !== ''"
+                  v-if="query !== ''"
                   #append>
                   <v-tooltip
                     open-delay="500"
                     bottom>
                     <template #activator="{ on }">
                       <v-btn
-                        :href="`?query=${search}`"
+                        :href="url"
                         icon
                         v-on="on">
                         <v-icon>mdi-link</v-icon>
@@ -34,17 +34,29 @@
               cols="12"
               md="6">
               <v-select
+                v-if="loaded"
                 v-model="chosenSubjects"
                 :items="Object.keys(availableSubjects)"
                 label="Matières"
                 attach
                 chips
                 multiple
-                outlined/>
+                outlined>
+                <template #selection="{ item, index }">
+                  <v-chip v-if="index === 0">
+                    <span>{{ item }}</span>
+                  </v-chip>
+                  <span
+                    v-if="index === 1"
+                    class="grey--text caption">
+                    (+{{ chosenSubjects.length - 1 }} autres)
+                  </span>
+                </template>
+              </v-select>
             </v-col>
           </v-row>
         </v-col>
-        <template v-if="search === ''">
+        <template v-if="query === ''">
           <v-row
             style="flex-direction: column"
             class="mx-0"
@@ -83,7 +95,8 @@
             lg="3">
             <file-card
               :file="file"
-              :subject="getSubjectBySlug(file.subject)"/>
+              :subject="getSubjectBySlug(file.subject)"
+              display-subject/>
           </v-col>
         </template>
       </v-row>
@@ -100,33 +113,51 @@ export default {
   components: { FileCard },
   data () {
     return {
-      search: '',
+      query: '',
       availableSubjects: {},
-      chosenSubjects: []
+      chosenSubjects: [],
+      loaded: false
     }
   },
   mounted () {
-    if (this.$route.query.query !== undefined) {
-      this.search = this.$route.query.query
+    if (this.$route.query.q !== undefined) {
+      this.query = this.$route.query.q
+    }
+    if (this.$route.query.s !== undefined && this.$route.query.s !== 'all') {
+      let querySubjects = this.$route.query.s.split(',')
+      querySubjects.forEach((subject) => {
+        this.chosenSubjects.push(this.getSubjectBySlug(subject).name)
+      })
     }
     this.getAllSubjects.forEach((subject) => {
       this.availableSubjects[subject.name] = subject.slug
     })
-    this.chosenSubjects = Object.keys(this.availableSubjects)
+    this.loaded = true
   },
   computed: {
     ...mapGetters(['searchFiles', 'getSubjectBySlug', 'getAllSubjects']),
     files () {
+      return this.searchFiles(this.query, this.subjects)
+    },
+    subjects () {
       let subjects = []
-      let availableSubjects = this.availableSubjects
-      this.chosenSubjects.forEach(function (value) {
-        subjects.push(availableSubjects[value])
-      })
-      return this.searchFiles(this.search, subjects)
+      if (this.chosenSubjects.length === 0) {
+        subjects = Object.values(this.availableSubjects)
+      } else {
+        this.chosenSubjects.forEach((value) => {
+          subjects.push(this.availableSubjects[value])
+        })
+      }
+      return subjects
+    },
+    url () {
+      let query = this.query
+      let subjects = this.chosenSubjects.length === 0 ? 'all' : this.subjects.join(',')
+      return `?q=${query}&s=${subjects}`
     }
   },
   metaInfo () {
-    let title = this.search === '' ? 'Recherche' : `Résultat de recherche : ${this.search}`
+    let title = this.query === '' ? 'Recherche' : `Résultat de recherche : ${this.query}`
     return {
       title: `${title} | 105`
     }
