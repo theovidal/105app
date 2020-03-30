@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Suites arithmétiques et géométriques",
+    "slug": "suites-arithmetiques-geometriques",
+    "description": "Étude de cas particuliers de suites : arithmétiques et géométriques.",
+    "subject": "maths",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-03-30"
+  }
+]
