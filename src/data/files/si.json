@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Conversions binaire-décimal-hexadécimal",
+    "slug": "conversions-binaire-decimal-hexadecimal",
+    "description": "Méthodes de conversion d'entiers entre ces trois bases",
+    "subject": "si",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-03-30"
+  }
+]
