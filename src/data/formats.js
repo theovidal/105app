@@ -10,6 +10,10 @@ const formats = {
   xmind: {
     name: 'Carte XMind',
     icon: 'mdi-map-outline'
+  },
+  tex: {
+    name: 'Code LaTeX',
+    icon: 'mdi-file-percent-outline'
   }
 }
 
