@@ -14,6 +14,22 @@ const formats = {
   tex: {
     name: 'Code LaTeX',
     icon: 'mdi-file-percent-outline'
+  },
+  csv: {
+    name: 'Liste CSV'
+    icon: 'mdi-format-list-text'
+  },
+  xls: {
+    name: 'Microsoft Excel',
+    icon: 'mdi-file-excel-outline'
+  },
+  png: {
+    name: 'Image',
+    icon: 'mdi-image-outline'
+  },
+  vue: {
+    name: 'Composant Vue',
+    icon: 'mdi-vuejs'
   }
 }
 
