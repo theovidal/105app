@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 
-import en from 'vuetify/es5/locale/en'
+import fr from 'vuetify/es5/locale/fr'
 import colors from 'vuetify/lib/util/colors'
 import 'vuetify/dist/vuetify.min.css'
 
@@ -37,7 +37,7 @@ export default new Vuetify({
     }
   },
   lang: {
-    locales: { en },
-    current: 'en'
+    locales: { fr },
+    current: 'fr'
   }
 })
