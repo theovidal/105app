@@ -112,12 +112,34 @@
     <v-row
       style="min-height: 85vh"
       justify="center">
-      <pdf
-        v-for="i in numPages"
-        :key="i"
-        :src="src"
-        :page="i"
-        :style="style"/>
+      <template v-if="defaultFormat === 'pdf'">
+        <pdf
+          v-for="i in numPages"
+          :key="i"
+          :src="src"
+          :page="i"
+          :style="style"/>
+      </template>
+      <template v-else-if="defaultFormat === 'json'">
+        <v-card :width="zoom + '%'">
+          <v-card-title>
+            {{ file.name }}
+          </v-card-title>
+          <v-card-text>
+            <v-text-field
+              v-model="tableSearch"
+              prepend-inner-icon="mdi-magnify"
+              label="Rechercher dans le tableau"
+              hide-details
+              single-line
+              outlined/>
+            <v-data-table
+              :headers="data.headers"
+              :items="data.items"
+              :search="tableSearch"/>
+          </v-card-text>
+        </v-card>
+      </template>
     </v-row>
     <v-footer class="background">
       <v-spacer/>
@@ -140,15 +162,19 @@ export default {
     return {
       subject: {},
       file: {},
-      src: '',
       url: '',
+      zoom: 90,
 
-      zoom: 100,
+      data: [],
+      tableSearch: '',
+
+      src: '',
       numPages: undefined,
 
       zoomMenu: false,
       infoDialog: false,
 
+      defaultFormat: '',
       formats
     }
   },
@@ -157,11 +183,22 @@ export default {
     this.file = this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
     this.url = `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
 
-    this.src = pdf.createLoadingTask(this.url + 'pdf')
+    this.defaultFormat = this.file.formats[0]
+    if (this.defaultFormat === 'pdf') {
+      this.src = pdf.createLoadingTask(this.url + 'pdf')
 
-    this.src.then(pdf => {
-      this.numPages = pdf.numPages;
-    })
+      this.src.then(pdf => {
+        this.numPages = pdf.numPages;
+      })
+    } else if (this.defaultFormat === 'json') {
+      fetch(this.url + 'json')
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          this.data = data
+        })
+    }
   },
   computed: {
     ...mapGetters(['getSubjectBySlug', 'getFileBySlug']),

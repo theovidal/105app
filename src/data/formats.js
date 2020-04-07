@@ -30,6 +30,10 @@ const formats = {
   vue: {
     name: 'Composant Vue',
     icon: 'mdi-vuejs'
+  },
+  json: {
+    name: 'Code JSON',
+    icon: 'code-json'
   }
 }
 
