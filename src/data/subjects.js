@@ -18,16 +18,10 @@ const subjects = [
     color: [61, 182, 122]
   },
   {
-    name: 'SVT',
-    slug: 'svt',
+    name: 'Enseignement scientifique',
+    slug: 'enseignement-scientifique',
     icon: 'mdi-sprout-outline',
     color: [76, 182, 61]
-  },
-  {
-    name: 'Physique Tronc Commun',
-    slug: 'physique-tc',
-    icon: 'mdi-atom-variant',
-    color: [94, 91, 182]
   },
   {
     name: 'Anglais',

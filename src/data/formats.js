@@ -16,7 +16,7 @@ const formats = {
     icon: 'mdi-file-percent-outline'
   },
   csv: {
-    name: 'Liste CSV'
+    name: 'Liste CSV',
     icon: 'mdi-format-list-text'
   },
   xls: {
