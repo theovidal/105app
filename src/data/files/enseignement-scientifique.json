@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Chapitre 8 - La forme de la Terre",
+    "slug": "chapitre-8-la-forme-de-la-terre",
+    "description": "Fiche leçon sur le chapitre 8 (Livre p144-145)",
+    "subject": "enseignement-scientifique",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-03-28"
+  },
+  {
+    "name": "Les cristaux, des édifices ordonnés",
+    "slug": "les-cristaux-des-edifices-ordonnes",
+    "description": "Fiche leçon sur le chapitre 1 (Livre p46-47)",
+    "subject": "enseignement-scientifique",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-04-07"
+  }
+]
