@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Vocabulaire de la description morale",
+    "slug": "la-description-morale",
+    "description": "Mots-clés permettant de décrire moralement une personne.",
+    "subject": "espagnol",
+    "formats": [
+      "json"
+    ],
+    "level": "2nde",
+    "added": "2018-07-27"
+  }
+]

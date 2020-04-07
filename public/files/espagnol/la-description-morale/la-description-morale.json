@@ -1,0 +1,224 @@
+{
+  "headers": [
+    { "text": "Mot", "value": "word" },
+    { "text": "Traduction", "value": "traduction" },
+    { "text": "Valeur", "value": "value" }
+  ],
+  "items": [
+    {
+      "word": "simpático",
+      "traduction": "sympathique",
+      "value": "mélioratif"
+    },
+    {
+      "word": "impaciente",
+      "traduction": "impatient",
+      "value": "péjoratif"
+    },
+    {
+      "word": "tímido.a",
+      "traduction": "timide",
+      "value": "péjoratif"
+    },
+    {
+      "word": "paranoico",
+      "traduction": "paranoïaque",
+      "value": "péjoratif"
+    },
+    {
+      "word": "enérgico.a",
+      "traduction": "énergique",
+      "value": "mélioratif"
+    },
+    {
+      "word": "inteligente",
+      "traduction": "intelligent.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "negativo.a",
+      "traduction": "négatif.ve",
+      "value": "péjoratif"
+    },
+    {
+      "word": "creativo.a",
+      "traduction": "créatif.ve",
+      "value": "mélioratif"
+    },
+    {
+      "word": "amable",
+      "traduction": "aimable - gentil",
+      "value": "mélioratif"
+    },
+    {
+      "word": "divertido.a",
+      "traduction": "amusant.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "vago.a - perezoso.a",
+      "traduction": "fainéant.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "tonto.a",
+      "traduction": "débile",
+      "value": "péjoratif"
+    },
+    {
+      "word": "desconfiado.a",
+      "traduction": "méfiant.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "celoso.a",
+      "traduction": "jaloux.ouse",
+      "value": "péjoratif"
+    },
+    {
+      "word": "discreto.a",
+      "traduction": "discret.ète",
+      "value": "mélioratif"
+    },
+    {
+      "word": "caprichoso.a",
+      "traduction": "capricieux.euse",
+      "value": "péjoratif"
+    },
+    {
+      "word": "generoso.a",
+      "traduction": "généreux.euse",
+      "value": "mélioratif"
+    },
+    {
+      "word": "trabajador.a",
+      "traduction": "travailleur.euse",
+      "value": "mélioratif"
+    },
+    {
+      "word": "optimista",
+      "traduction": "optimiste",
+      "value": "mélioratif"
+    },
+    {
+      "word": "pesimista",
+      "traduction": "pessimiste",
+      "value": "péjoratif"
+    },
+    {
+      "word": "entusiasta",
+      "traduction": "enthousiaste",
+      "value": "mélioratif"
+    },
+    {
+      "word": "sonriente",
+      "traduction": "souriant.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "fiel",
+      "traduction": "fidèle",
+      "value": "mélioratif"
+    },
+    {
+      "word": "empollón.ona",
+      "traduction": "bûcheur.euse (fam. : intello)",
+      "value": "mélioratif"
+    },
+    {
+      "word": "rebelde",
+      "traduction": "rebelle",
+      "value": "péjoratif"
+    },
+    {
+      "word": "revoltoso.a",
+      "traduction": "turbulent.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "tacaño.a",
+      "traduction": "avare (fam. : radin)",
+      "value": "péjoratif"
+    },
+    {
+      "word": "terco.a",
+      "traduction": "têtu.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "maduro.a",
+      "traduction": "mûr.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "infantil",
+      "traduction": "infantile - puéril",
+      "value": "péjoratif"
+    },
+    {
+      "word": "cariñoso.a",
+      "traduction": "tendre",
+      "value": "mélioratif"
+    },
+    {
+      "word": "agresivo.a",
+      "traduction": "agressif.ive",
+      "value": "péjoratif"
+    },
+    {
+      "word": "seguro.a",
+      "traduction": "sûr.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "inseguro.a",
+      "traduction": "incertain.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "inocente",
+      "traduction": "inocent",
+      "value": "mélioratif"
+    },
+    {
+      "word": "culpable",
+      "traduction": "coupable",
+      "value": "péjoratif"
+    },
+    {
+      "word": "razonable",
+      "traduction": "raisonable",
+      "value": "mélioratif"
+    },
+    {
+      "word": "atontado.a",
+      "traduction": "étourdi.e",
+      "value": "péjoratif"
+    },
+    {
+      "word": "cotilla",
+      "traduction": "commère",
+      "value": "péjoratif"
+    },
+    {
+      "word": "sincero.a",
+      "traduction": "sincère",
+      "value": "mélioratif"
+    },
+    {
+      "word": "honesto.a",
+      "traduction": "honnête",
+      "value": "mélioratif"
+    },
+    {
+      "word": "educado.a",
+      "traduction": "bien élevé.e",
+      "value": "mélioratif"
+    },
+    {
+      "word": "maniático.a",
+      "traduction": "maniaque",
+      "value": "péjoratif"
+    }
+  ]
+}
