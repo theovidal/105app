@@ -14,7 +14,7 @@
           v-model="zoom"
           style="height: 30px"
           min="10"
-          max="100"/>
+          max="200"/>
       </template>
       <template v-else>
         <v-tooltip
@@ -29,6 +29,19 @@
             </v-btn>
           </template>
           <span>Niveau de zoom</span>
+        </v-tooltip>
+        <v-tooltip
+          bottom
+          open-delay="500">
+          <template #activator="{ on }">
+            <v-btn
+              icon
+              v-on="on"
+              @click="rotate += 90">
+              <v-icon>mdi-rotate-right</v-icon>
+            </v-btn>
+          </template>
+          <span>Rotation de la page</span>
         </v-tooltip>
         <v-dialog
           v-model="infoDialog"
@@ -49,15 +62,26 @@
           </template>
           <v-card>
             <v-card-text class="pt-4">
-              <strong>Nom : </strong>{{ file.name }}<br>
+              <strong>Nom :</strong>
+              {{ file.name }}
+              <br>
 
-              <strong>Description : </strong><span v-html="file.description"/><br>
+              <strong>Description : </strong>
+              <span v-html="file.description"/>
+              <br>
 
-              <strong>Ajoutée le : </strong>{{ dateToText(file.added) }}<br>
+              <strong>Ajoutée le :</strong>
+              {{ dateToText(file.added) }}
+              <br>
 
-              <strong>Niveau (indicatif) : </strong>{{ file.level }}<br>
+              <strong>Niveau (indicatif) :</strong>
+              {{ file.level }}
+              <br>
 
-              <strong>Matière : </strong><v-icon>{{ subject.icon }}</v-icon> {{ subject.name }}<br>
+              <strong>Matière :</strong>
+              <v-icon>{{ subject.icon }}</v-icon>
+              {{ subject.name }}
+              <br>
             </v-card-text>
 
             <v-divider/>
@@ -67,12 +91,12 @@
               <v-btn
                 color="primary"
                 text
-                @click="infoDialog = false">
-                Fermer
-              </v-btn>
+                @click="infoDialog = false">Fermer</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
+        <v-spacer/>
+        <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
         <v-spacer/>
         <v-menu
           transition="slide-y-transition"
@@ -98,15 +122,12 @@
               :href="url + format"
               target="_blank">
               <v-list-item-icon>
-                <v-icon>
-                  {{ formats[format].icon }}
-                </v-icon>
+                <v-icon>{{ formats[format].icon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-title>{{ formats[format].name }} (.{{ format }})</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
-
       </template>
     </v-app-bar>
     <v-row
@@ -118,13 +139,12 @@
           :key="i"
           :src="src"
           :page="i"
+          :rotate="rotate"
           :style="style"/>
       </template>
       <template v-else-if="defaultFormat === 'json'">
         <v-card :width="zoom + '%'">
-          <v-card-title>
-            {{ file.name }}
-          </v-card-title>
+          <v-card-title>{{ file.name }}</v-card-title>
           <v-card-text>
             <v-text-field
               v-model="tableSearch"
@@ -169,6 +189,7 @@ export default {
       tableSearch: '',
 
       src: '',
+      rotate: 0,
       numPages: undefined,
 
       zoomMenu: false,
@@ -192,10 +213,10 @@ export default {
       })
     } else if (this.defaultFormat === 'json') {
       fetch(this.url + 'json')
-        .then((response) => {
+        .then(response => {
           return response.json()
         })
-        .then((data) => {
+        .then(data => {
           this.data = data
         })
     }
@@ -203,7 +224,7 @@ export default {
   computed: {
     ...mapGetters(['getSubjectBySlug', 'getFileBySlug']),
     style () {
-      return `width: ${this.zoom}%`
+      return `width: ${this.zoom}vw; overflow-x: scroll`
     }
   },
   methods: {
@@ -211,7 +232,7 @@ export default {
   },
   metaInfo () {
     return {
-      title:`${this.subject.name} : ${this.file.name} | 105`,
+      title: `${this.subject.name} : ${this.file.name} | 105`,
       meta: [
         {
           property: 'og:title',
