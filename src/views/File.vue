@@ -1,6 +1,7 @@
 <template>
-  <main>
+  <v-content>
     <v-app-bar
+      class="contained"
       app
       dense
       hide-on-scroll>
@@ -165,7 +166,7 @@
       <v-spacer/>
       <div>&copy; {{ new Date().getFullYear() }}, Théo Vidal</div>
     </v-footer>
-  </main>
+  </v-content>
 </template>
 
 <script>

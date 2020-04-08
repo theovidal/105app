@@ -1,10 +1,10 @@
 <template>
-  <main>
+  <v-content>
     <top-banner
       :title="subject.name"
       :icon="subject.icon"
       :color="subject.color"/>
-    <v-container>
+    <v-container class="contained">
       <v-row>
         <v-col
           v-for="file in files"
@@ -19,7 +19,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </main>
+  </v-content>
 </template>
 
 <script>

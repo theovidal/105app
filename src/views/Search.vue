@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <v-content class="contained">
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -101,7 +101,7 @@
         </template>
       </v-row>
     </v-container>
-  </main>
+  </v-content>
 </template>
 
 <script>
