@@ -10,5 +10,17 @@
     ],
     "level": "1ère",
     "added": "2020-03-30"
+  },
+  {
+    "name": "Comment apporter la meilleure réponse à un besoin ?",
+    "slug": "comment-apporter-la-meilleure-reponse-a-un-besoin",
+    "description": "Séquence 1 des S.I. niveau première",
+    "subject": "si",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2019-10-01"
   }
 ]
