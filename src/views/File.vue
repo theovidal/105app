@@ -1,10 +1,8 @@
 <template>
   <v-content>
     <v-app-bar
-      class="contained"
-      app
-      dense
-      hide-on-scroll>
+      class="contained mb-3"
+      dense>
       <template v-if="zoomMenu">
         <v-btn
           icon
@@ -15,7 +13,7 @@
           v-model="zoom"
           style="height: 30px"
           min="10"
-          max="200"/>
+          max="100"/>
       </template>
       <template v-else>
         <v-tooltip
