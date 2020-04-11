@@ -2,7 +2,7 @@
   <div
     id="top-banner"
     :class="{ 'top-banner__tall': tall, gradient: color !== [] }"
-    :style="color !== [] ? `background: ${getGradient(color)}` : ''">
+    :style="color !== [] ? `background: ${getGradient(color)} !important` : ''">
     <v-icon
       v-if="$vuetify.breakpoint.mdAndUp && icon !== null"
       color="white"
