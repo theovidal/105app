@@ -129,13 +129,11 @@
         </v-menu>
       </template>
     </v-app-bar>
-    <v-row
-      style="min-height: 85vh"
-      justify="center">
+    <v-row justify="center">
       <template v-if="defaultFormat === 'pdf'">
         <pdf
           v-for="i in numPages"
-          :key="i"
+          :key="`${file.subject}-${file.slug}-${i}`"
           :src="src"
           :page="i"
           :rotate="rotate"
@@ -160,6 +158,18 @@
         </v-card>
       </template>
     </v-row>
+    <v-container>
+      <v-row>
+        <v-col
+          cols="12">
+          <p class="display-1 text--primary">
+            <v-icon>mdi-file-multiple-outline</v-icon>
+            Sur la matière {{ subject.name }}
+          </p>
+          <files-slider :files="subjectFiles"/>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-footer class="background">
       <v-spacer/>
       <div>&copy; {{ new Date().getFullYear() }}, Théo Vidal</div>
@@ -173,13 +183,15 @@ import pdf from 'vue-pdf'
 import formats from '@/data/formats'
 import { dateToText } from '@/utils/parsing'
 import { getHexa } from '../utils/color'
+import FilesSlider from './parts/FilesSlider'
 
 export default {
   name: 'File',
-  components: { pdf },
+  components: { pdf, FilesSlider },
   data () {
     return {
       subject: {},
+      subjectFiles: [],
       file: {},
       url: '',
       zoom: 90,
@@ -200,6 +212,7 @@ export default {
   },
   mounted () {
     this.subject = this.getSubjectBySlug(this.$route.params.subject)
+    this.subjectFiles = this.getFilesBySubject(this.$route.params.subject)
     this.file = this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
     this.url = `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
 
@@ -221,9 +234,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getSubjectBySlug', 'getFileBySlug']),
+    ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFilesBySubject']),
     style () {
-      return `width: ${this.zoom}vw; overflow-x: scroll`
+      return `width: ${this.zoom}vw`
     }
   },
   methods: {

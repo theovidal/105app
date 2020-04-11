@@ -18,7 +18,10 @@
 
               <v-list-item-content>
                 <v-list-item-title>{{ subject.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ getFilesBySubject(subject.slug).length }} fiche{{ getFilesBySubject(subject.slug).length === 1 ? '' : 's' }}</v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  {{ getFilesBySubject(subject.slug).length === 0 ? 'Aucune' : getFilesBySubject(subject.slug).length }}
+                  fiche{{ getFilesBySubject(subject.slug).length > 1 ? 's' : '' }}
+                </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-divider :key="subject.slug"/>
