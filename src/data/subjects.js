@@ -42,8 +42,14 @@ const subjects = [
     color: [178, 182, 61]
   },
   {
-    name: 'Physique-Chimie',
-    slug: 'physique-chimie',
+    name: 'Physique',
+    slug: 'physique',
+    icon: 'mdi-telescope',
+    color: [61, 71, 182]
+  },
+  {
+    name: 'Chimie',
+    slug: 'chimie',
     icon: 'mdi-beaker-outline',
     color: [119, 61, 182]
   },
