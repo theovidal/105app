@@ -24,21 +24,10 @@ export default {
     return {
       activePage: '',
       pages: [
-        {
-          name: 'Accueil',
-          icon: 'mdi-home',
-          link: '/'
-        },
-        {
-          name: 'Matières',
-          icon: 'mdi-file-cabinet',
-          link: '/subjects'
-        },
-        {
-          name: 'Recherche',
-          icon: 'mdi-magnify',
-          link: '/search'
-        },
+        { name: 'Accueil', icon: 'mdi-home', link: '/' },
+        { name: 'Matières', icon: 'mdi-file-cabinet', link: '/subjects' },
+        { name: 'Bibliothèque', icon: 'mdi-book-multiple-outline', link: '/library' },
+        { name: 'Recherche', icon: 'mdi-magnify', link: '/search' }
       ]
     }
   },

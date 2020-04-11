@@ -30,6 +30,11 @@ export default new Router({
       path: '/subjects/:subject/:file',
       name: 'file',
       component: () => import(/* webpackChunkName: "files" */ '../views/File.vue')
+    },
+    {
+      path: '/library',
+      name: 'library',
+      component: () => import(/* webpackChunkName: "general" */ '../views/Library.vue')
     }
   ]
 })
