@@ -1,17 +1,18 @@
 {
-  "name": "highest-template",
-  "version": "1.0.0",
-  "description": "🧗‍ Vue.js template used by Highest",
-  "homepage": "https://github.com/highest-app/template",
+  "name": "105app",
+  "version": "0.1.0",
+  "description": "Revise in the best way. A school app with files to work lessons",
+  "homepage": "https://github.com/exybore/105app",
   "keywords": [
     "vuejs",
     "vuetify",
-    "template"
+    "school",
+    "revisions"
   ],
   "licenses": [
     {
       "name": "GPL-3.0",
-      "url": "https://github.com/highest-app/template/blob/master/LICENSE"
+      "url": "https://github.com/exybore/105app/blob/master/LICENSE"
     }
   ],
   "maintainers": [
@@ -24,7 +25,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/highest-app/template.git"
+      "url": "https://github.com/exybore/105app.git"
     }
   ],
   "scripts": {
