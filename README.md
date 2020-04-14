@@ -1,13 +1,14 @@
 <div align="center">
-  <img src="./public/img/logo.png" alt="Highest logo" height="120">
-  <h3>Vue.js template used by Highest</h3>
-  <a href="https://highest.netlify.com">Website</a>
+  <img src="./public/img/icons/icon-512x512.png" alt="Highest 105 logo" height="120">
+  <h1>105 - the app</h1>
+  <h3>Revise in the best way</h3>
+  <a href="https://105app.exybo.re">Website</a>
   <br>
-  <a href="https://github.com/highest-app/template/blob/master/.LICENSE">
-    <img src="https://img.shields.io/github/license/highest-app/highest" alt="License"/>
+  <a href="https://github.com/exybore/105app/blob/master/.LICENSE">
+    <img src="https://img.shields.io/github/license/exybore/105app" alt="License"/>
   </a>
-  <a href="https://github.com/highest-app/template/issues">
-    <img src="https://img.shields.io/github/issues/exybore/highest" alt="Opened issues"/>
+  <a href="https://github.com/exybore-app/105app/issues">
+    <img src="https://img.shields.io/github/issues/exybore/105app" alt="Opened issues"/>
   </a>
 </div>
 
@@ -22,25 +23,19 @@
 
 ## 🌈 How it works
 
-It's a really simple template built on top of Vue.js. It includes :
-
-- Vuetify framework (Material Design components)
-- Vue Router
-- Vuex (stores)
-- Service worker and PWA (offline usage)
-- ESLint (code quality)
-
-It's used by [Highest](https://github.com/highest-app/highest) and delivered for everyone to use for various web projects.
+This simple app stores files in defined formats for example Microsoft Word and PDF, and then displays PDFs or JSON lists to the user. These files are organized by subjects, the user can search files and store them in personal, client-side libraries.
 
 ## 💻 Development
+
+Make sure you have NodeJS 12+ installed on your computer, as well as Git in any form - CLI, UI, GitHub...
 
 ### Environment setup
 
 First of all, clone the repository from GitHub on your local machine : (this requires Git to be installed)
 
 ```bash
-git clone https://github.com/highest-app/template.git  # Using HTTP
-git clone git@github.com:highest-app/template          # Using SSH
+git clone https://github.com/exybore/105app.git  # Using HTTP
+git clone git@github.com:exybore/105app          # Using SSH
 ```
 
 Install the required dependencies using your favorite package manager :
