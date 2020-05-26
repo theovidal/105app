@@ -22,5 +22,17 @@
     ],
     "level": "1ère",
     "added": "2019-10-01"
+  },
+  {
+    "name": "Comment évaluer l'efficacité énergétique d'un système ?",
+    "slug": "comment-evaluer-lefficacite-energetique-dun-systeme",
+    "description": "Énergie, puissance et rendement",
+    "subject": "si",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2019-11-07"
   }
 ]
