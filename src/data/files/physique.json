@@ -10,5 +10,17 @@
     ],
     "level": "1ère",
     "added": "2020-06-03"
+  },
+  {
+    "name": "Les ondes mécaniques",
+    "slug": "les-ondes-mecaniques",
+    "description": "Le phénomène d'onde mécanique progressive, sa mesure et sa double périodicité",
+    "subject": "physique",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-06-09"
   }
 ]
