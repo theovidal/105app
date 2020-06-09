@@ -2,7 +2,7 @@
   {
     "name": "Fiche auteurs et oeuvres",
     "slug": "fiche-auteurs-et-oeuvres",
-    "description": "Fiche récapitulant les oeuvres et auteurs vus pour les quatre séquences (1°5).",
+    "description": "Récapitulatif des oeuvres et auteurs vus pour les quatre séquences (1°5).",
     "subject": "francais",
     "formats": [
       "pdf",

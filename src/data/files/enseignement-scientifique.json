@@ -1,8 +1,8 @@
 [
   {
-    "name": "Chapitre 8 - La forme de la Terre",
-    "slug": "chapitre-8-la-forme-de-la-terre",
-    "description": "Fiche leçon sur le chapitre 8 (Livre p144-145)",
+    "name": "La forme de la Terre",
+    "slug": "la-forme-de-la-terre",
+    "description": "Particularités sur la forme sphérique de la Terre (rayon, circonférence, repérage)",
     "subject": "enseignement-scientifique",
     "formats": [
       "pdf",
@@ -14,7 +14,7 @@
   {
     "name": "Les cristaux, des édifices ordonnés",
     "slug": "les-cristaux-des-edifices-ordonnes",
-    "description": "Fiche leçon sur le chapitre 1 (Livre p46-47)",
+    "description": "Les solides cristallins et amorphes, et leur construction macroscopique",
     "subject": "enseignement-scientifique",
     "formats": [
       "pdf",
