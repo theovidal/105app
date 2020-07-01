@@ -1,27 +1,22 @@
 <template>
-  <v-card
-    :to="`/subjects/${subject.slug}/${file.slug}`">
-    <v-card-text>
-      <p class="display-1 text--primary">{{ file.name }}</p>
-      <p v-if="displaySubject">
-        <v-icon
-          :color="getRgba(subject.color)"
-          left>
-          {{ subject.icon }}
-        </v-icon>
-        {{ subject.name }}
-      </p>
-      <div
-        class="text--primary"
-        v-html="file.description"/>
-      <v-chip>{{ dateToText(file.added) }}</v-chip>&nbsp;
-      <v-chip>{{ file.level }}</v-chip>
-    </v-card-text>
-  </v-card>
+  <card
+    :to="`/subjects/${subject.slug}/${file.slug}`"
+    :color="getHexa(subject.color)"
+    center>
+    <template #title>{{ file.name }}</template>
+    <template #subtitle>{{ subject.name }} &mdash; {{ file.level }}</template>
+    <div
+      class="text--primary"
+      v-html="file.description"/>
+    <span>
+      <v-icon>mdi-clock-outline</v-icon>
+      Ajouté le {{ dateToText(file.added) }} par {{ file.author }}
+    </span>
+  </card>
 </template>
 
 <script>
-import { getRgba } from '@/utils/color'
+import { getRgba, getHexa } from '@/utils/color'
 import { dateToText } from '@/utils/parsing'
 
 export default {
@@ -42,7 +37,8 @@ export default {
   },
   methods: {
     dateToText,
-    getRgba
+    getRgba,
+    getHexa
   }
 }
 </script>

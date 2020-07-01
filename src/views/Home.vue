@@ -7,62 +7,57 @@
           md="6">
           <v-row>
             <v-col cols="12">
-              <v-card class="gradient">
-                <v-card-text class="gradient">
-                  <div>La clé de la réussite</div>
-                  <p class="display-1 text--primary">105 - L'appli</p>
-                  <v-img
-                    width="50%"
-                    src="/img/illustrations/organizer.svg"
-                    alt="Studying"/>
-                  <div class="text--primary">
-                    Accédez à des fiches de révision sur une grande variété de matières.<br>
-                    Éditées personnellement  par Théo Vidal 😉
-                  </div>
-                </v-card-text>
-              </v-card>
+              <card gradient>
+                <template #title-prepend>La clé de la réussite</template>
+                <template #title>105 - L'appli</template>
+                <v-img
+                  width="50%"
+                  src="/img/illustrations/organizer.svg"
+                  alt="Studying"/>
+                <div class="text--primary">
+                  Accédez à des fiches de révision sur une grande variété de matières.<br>
+                  Ces fiches sont éditées de manière personnelle à partir de cours.
+                </div>
+              </card>
             </v-col>
             <v-col cols="12">
-              <v-card>
-                <v-card-text>
-                  <p class="display-1 text--primary">Rejoignez-moi !</p>
-                  <v-btn
-                    href="https://github.com/exybore"
-                    target="blank"
-                    :style="`background: ${getGradient([74, 74, 74])}`">
-                    <v-icon left>mdi-github</v-icon> Github
-                  </v-btn>
-                  &nbsp;
-                  <v-btn
-                    href="https://twitter.com/exybore"
-                    target="blank"
-                    :style="`background: ${getGradient([57, 153, 230])}`">
-                    <v-icon left>mdi-twitter</v-icon> Twitter
-                  </v-btn>
-                  &nbsp;
-                  <v-btn
-                    href="https://www.youtube.com/channel/UC9Q3XhnYp-bZUgE995Csxww"
-                    target="blank"
-                    :style="`background: ${getGradient([212, 14, 14])}`">
-                    <v-icon left>mdi-youtube</v-icon> YouTube
-                  </v-btn>
-                </v-card-text>
-              </v-card>
+              <card>
+                <template #title>Rejoignez-moi !</template>
+                <v-btn
+                  href="https://github.com/theovidal"
+                  target="blank"
+                  color="#4A4A4A"
+                  outlined>
+                  <v-icon left>mdi-github</v-icon> Github
+                </v-btn>
+                &nbsp;
+                <v-btn
+                  href="https://twitter.com/exybore"
+                  target="blank"
+                  color="#3999E6"
+                  outlined>
+                  <v-icon left>mdi-twitter</v-icon> Twitter
+                </v-btn>
+                &nbsp;
+                <v-btn
+                  href="https://www.youtube.com/channel/UC9Q3XhnYp-bZUgE995Csxww"
+                  target="blank"
+                  color="#D40E0E"
+                  outlined>
+                  <v-icon left>mdi-youtube</v-icon> YouTube
+                </v-btn>
+              </card>
             </v-col>
             <v-col cols="12">
-              <v-card>
-                <v-card-text>
-                  <div>Pandémie de maladie à Coronavirus 2019-2020</div>
-                  <v-img
-                    width="50%"
-                    src="/img/illustrations/home.svg"
-                    alt="Home"/>
-                  <p class="headline">En ce moment, ayez le bon réflexe : #RESTEZCHEZVOUS</p>
-                  <p class="text--primary">C'est l'occasion idéale pour réviser ! Vous trouverez sûrement des choses intéressantes ici...</p>
-
-                  <a href="https://www.gouvernement.fr/info-coronavirus">Obtenez les informations et conseils du Gouvernement</a>
-                </v-card-text>
-              </v-card>
+              <card>
+                <v-img
+                  #title-prepend
+                  width="50%"
+                  src="/img/illustrations/surf.svg"
+                  alt="Home"/>
+                <template #title>Les vacances d'été sont arrivées !</template>
+                <p>Reposez-vous, partez découvrir de nouveaux lieux, et revenez sur 105app juste avant la rentrée pour repartir sur le bon pied!</p>
+              </card>
             </v-col>
           </v-row>
         </v-col>
@@ -70,8 +65,8 @@
           cols="12"
           md="6">
           <p class="display-1 text--primary">
-            <v-icon>mdi-database-plus</v-icon>
-            Derniers ajouts
+            <v-icon color="black">mdi-book-plus-multiple-outline</v-icon>
+            Ajouts récents
           </p>
           <v-row>
             <v-col

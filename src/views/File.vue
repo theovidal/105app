@@ -2,6 +2,8 @@
   <v-main>
     <v-app-bar
       class="contained mb-3"
+      elevation="0"
+      style="border-bottom: 1px solid rgba(0, 0, 0, .12)"
       dense>
       <template v-if="zoomMenu">
         <v-btn
