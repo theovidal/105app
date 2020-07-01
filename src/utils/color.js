@@ -1,24 +1,27 @@
-function getRgba (color, opacity = 1) {
+function getRgba(color, opacity = 1) {
   return `rgba(${color.join(',')},${opacity})`
 }
 
-function getHexa (color) {
+function getHexa(color) {
   let converted = '#'
   color.forEach(function(part) {
-    converted += part.toString(16)
+    let toAdd = part.toString(16)
+    if (toAdd.length == 1) converted += '0'
+    converted += toAdd
   })
+  console.log(converted)
   return converted
 }
 
-function getLighter1 (color) {
-  return getRgba(color, 0.9)
+function getLighter1(color) {
+  return getRgba(color, 0.95)
 }
 
-function getLighter2 (color) {
-  return getRgba(color, 0.5)
+function getLighter2(color) {
+  return getRgba(color, 0.45)
 }
 
-function getGradient (color) {
+function getGradient(color) {
   let lighter1 = getLighter1(color)
   let lighter2 = getLighter2(color)
 
