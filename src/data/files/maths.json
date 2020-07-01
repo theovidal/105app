@@ -10,5 +10,17 @@
     ],
     "level": "1ère",
     "added": "2020-03-30"
+  },
+  {
+    "name": "Dérivation",
+    "slug": "derivation",
+    "description": "Taux d'accroissement, nombre dérivé, tangente et fonction dérivée",
+    "subject": "maths",
+    "formats": [
+      "pdf",
+      "docx"
+    ],
+    "level": "1ère",
+    "added": "2020-07-01"
   }
 ]
