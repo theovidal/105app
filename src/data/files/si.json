@@ -4,6 +4,7 @@
     "slug": "conversions-binaire-decimal-hexadecimal",
     "description": "Méthodes de conversion d'entiers entre ces trois bases numériques",
     "subject": "si",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "docx"
@@ -16,6 +17,7 @@
     "slug": "comment-apporter-la-meilleure-reponse-a-un-besoin",
     "description": "L'analyse du besoin et des outils pour représenter un système",
     "subject": "si",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "docx"
@@ -28,6 +30,7 @@
     "slug": "comment-evaluer-lefficacite-energetique-dun-systeme",
     "description": "Énergie, puissance et rendement dans une chaîne de puissance",
     "subject": "si",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "docx"
