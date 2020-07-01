@@ -1,52 +1,28 @@
 <template>
-  <v-content>
-    <top-banner title="Librairie"/>
-    <v-container class="contained">
+  <v-main class="contained">
+    <top-banner
+      title="Ma bibliothèque"
+      icon="mdi-file-document-multiple-outline"/>
+    <v-container>
       <v-row>
-        <v-col
-          v-for="list in library"
-          :key="list.slug"
-          cols="12">
-          <p class="display-1 text--primary">
-            <v-icon>{{ list.icon }}</v-icon>
-            {{ list.name }}
-          </p>
+        <v-col cols="12">
           <files-slider
-            :files="getFiles(list.files)"
+            :files="getLibraryFiles"
             display-subject/>
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import TopBanner from './parts/TopBanner'
-import FilesSlider from './parts/FilesSlider'
+import TopBanner from '@/views/parts/TopBanner'
+import FilesSlider from '@/views/parts/FilesSlider'
 
 export default {
   name: 'Library',
   components: { TopBanner, FilesSlider },
-  data () {
-    return {
-      library: {}
-    }
-  },
-  mounted () {
-    this.library = this.getLibrary
-  },
-  computed: {
-    ...mapGetters(['getLibrary', 'getFileBySlug'])
-  },
-  methods: {
-    getFiles (data) {
-      let output = []
-      data.forEach(file => {
-        output.push(this.getFileBySlug(file.subject, file.slug))
-      })
-      return output
-    }
-  }
+  computed: mapGetters(['getLibraryFiles']),
 }
 </script>

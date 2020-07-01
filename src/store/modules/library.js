@@ -1,13 +1,38 @@
-import { loadFromStorage } from '../../utils/storage'
+import { loadFromStorage, saveToStorage } from '@/utils/storage'
 
-const state = {
-  library: loadFromStorage('library')
-}
+const state = loadFromStorage('library')
+
 const getters = {
-  getLibrary: state => state.library
+  getLibraryFiles: (state, rootGetters) => {
+    let output = []
+    state.forEach(file => {
+      file = file.split('/')
+      output.push(rootGetters.getFileBySlug(file[0], file[1]))
+    })
+    return output
+  }
 }
-const mutations = {}
-const actions = {}
+
+const mutations = {
+  ADD_FILE(state, data) {
+    state.push(`${data.subject}/${data.file}`)
+  },
+  REMOVE_FILE(state, data) {
+    let indexToRemove = state.findIndex(file => file === `${data.subject}/${data.file}`)
+    state.splice(indexToRemove, 1)
+  }
+}
+
+const actions = {
+  addFileToLibrary({ commit, state }, data) {
+    commit('ADD_FILE', data)
+    saveToStorage('library', state)
+  },
+  removeFileFromLibrary({ commit, state }, data) {
+    commit('REMOVE_FILE', data)
+    saveToStorage('library', state)
+  }
+}
 
 export default {
   state,
