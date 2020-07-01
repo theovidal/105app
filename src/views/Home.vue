@@ -59,6 +59,18 @@
                 <p>Reposez-vous, partez découvrir de nouveaux lieux, et revenez sur 105app juste avant la rentrée pour repartir sur le bon pied!</p>
               </card>
             </v-col>
+            <v-col cols="12">
+              <card gradient>
+                <template #title>Proposez vos fiches !</template>
+                <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
+                <v-btn
+                  href="https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677"
+                  outlined>
+                  <v-icon left>mdi-open-in-new</v-icon>
+                  Soumettre une fiche
+                </v-btn>
+              </card>
+            </v-col>
           </v-row>
         </v-col>
         <v-col

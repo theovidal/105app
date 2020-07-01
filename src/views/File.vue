@@ -71,6 +71,10 @@
               <span v-html="file.description"/>
               <br>
 
+              <strong>Auteur : </strong>
+              {{ file.author }}
+              <br>
+
               <strong>Ajoutée le :</strong>
               {{ dateToText(file.added) }}
               <br>
@@ -191,7 +195,7 @@
           cols="12">
           <p class="display-1 text--primary">
             <v-icon>mdi-file-multiple-outline</v-icon>
-            Sur la matière {{ subject.name }}
+            {{ subject.name }} : les autres fiches
           </p>
           <files-slider :files="subjectFiles"/>
         </v-col>
