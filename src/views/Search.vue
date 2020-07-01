@@ -105,13 +105,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import FileCard from './parts/FileCard'
 
 export default {
   name: 'Search',
   components: { FileCard },
-  data () {
+  data() {
     return {
       query: '',
       availableSubjects: {},
@@ -119,7 +119,7 @@ export default {
       loaded: false
     }
   },
-  mounted () {
+  mounted() {
     if (this.$route.query.q !== undefined) {
       this.query = this.$route.query.q
     }
@@ -129,17 +129,20 @@ export default {
         this.chosenSubjects.push(this.getSubjectBySlug(subject).name)
       })
     }
-    this.getAllSubjects.forEach((subject) => {
+    this.defaultSubjects.forEach((subject) => {
       this.availableSubjects[subject.name] = subject.slug
     })
     this.loaded = true
   },
   computed: {
-    ...mapGetters(['searchFiles', 'getSubjectBySlug', 'getAllSubjects']),
-    files () {
+    ...mapState({
+      defaultSubjects: 'subjects'
+    }),
+    ...mapGetters(['searchFiles', 'getSubjectBySlug']),
+    files() {
       return this.searchFiles(this.query, this.subjects)
     },
-    subjects () {
+    subjects() {
       let subjects = []
       if (this.chosenSubjects.length === 0) {
         subjects = Object.values(this.availableSubjects)
@@ -150,13 +153,13 @@ export default {
       }
       return subjects
     },
-    url () {
+    url() {
       let query = this.query
       let subjects = this.chosenSubjects.length === 0 ? 'all' : this.subjects.join(',')
       return `?q=${query}&s=${subjects}`
     }
   },
-  metaInfo () {
+  metaInfo() {
     let title = this.query === '' ? 'Recherche' : `Résultat de recherche : ${this.query}`
     return {
       title: `${title} | 105`

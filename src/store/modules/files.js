@@ -1,21 +1,20 @@
 import { loadFiles } from '../../utils/storage'
 
-const state = {
-  files: loadFiles()
-}
+const state = loadFiles()
+
 const getters = {
   getAllFiles: state => {
     let files = []
-    for (let subject in state.files) {
+    for (let subject in state) {
       files = [
         ...files,
-        ...state.files[subject]
+        ...state[subject]
       ]
     }
     return files
   },
   getFilesBySubject: state => subject => {
-    let files = state.files[subject]
+    let files = state[subject]
     if (files === undefined) {
       return []
     } else {
@@ -23,7 +22,7 @@ const getters = {
     }
   },
   getFileBySlug: state => (subject, slug) => {
-    return state.files[subject].find(file => file.slug === slug)
+    return state[subject].find(file => file.slug === slug)
   },
   getLastFiles: (state, getters) => {
     let files = getters.getAllFiles.sort((a,b) => {

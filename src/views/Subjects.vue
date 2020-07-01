@@ -8,7 +8,7 @@
           two-line>
           <template v-for="subject in subjects">
             <v-list-item
-              :key="subject.slug"
+              :key="subject.slug + 'item'"
               :disabled="getFilesBySubject(subject.slug).length === 0"
               :style="getFilesBySubject(subject.slug).length === 0 ? `background-color: #9E9E9E` : `background: ${getGradient(subject.color)}`"
               :to="{ name: 'subject', params: { subject: subject.slug }}">
@@ -24,7 +24,7 @@
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
-            <v-divider :key="subject.slug"/>
+            <v-divider :key="subject.slug + 'divider'"/>
           </template>
         </v-list>
       </v-container>
@@ -33,26 +33,17 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import { getGradient } from '../utils/color'
 import TopBanner from './parts/TopBanner'
 
 export default {
   name: 'Subject',
   components: { TopBanner },
-  data () {
-    return {
-      subjects: []
-    }
-  },
-  mounted () {
-    this.subjects = this.getAllSubjects
-  },
   computed: {
-    ...mapGetters(['getAllSubjects', 'getFilesBySubject'])
+    ...mapState(['subjects']),
+    ...mapGetters(['getFilesBySubject'])
   },
-  methods: {
-    getGradient
-  }
+  methods: { getGradient }
 }
 </script>

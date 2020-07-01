@@ -75,7 +75,7 @@
           </p>
           <v-row>
             <v-col
-              v-for="file in lastFiles"
+              v-for="file in getLastFiles"
               :key="file.slug"
               cols="12">
               <file-card
@@ -101,19 +101,10 @@ export default {
   components: { FileCard },
   data () {
     return {
-      lastFiles: [],
-
       subjects
     }
   },
-  mounted () {
-    this.lastFiles = this.getLastFiles
-  },
-  computed: {
-    ...mapGetters(['getLastFiles', 'getSubjectBySlug'])
-  },
-  methods: {
-    getGradient
-  }
+  computed: mapGetters(['getLastFiles', 'getSubjectBySlug']),
+  methods: { getGradient }
 }
 </script>

@@ -20,7 +20,7 @@
 <script>
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       activePage: '',
       pages: [
@@ -31,7 +31,7 @@ export default {
       ]
     }
   },
-  metaInfo () {
+  metaInfo() {
     return {
       title: "105 - L'appli",
       meta: [

@@ -15,8 +15,8 @@ function loadFromStorage(category) {
   let defaults = {
     library: [
       {
-        name: 'Mes fiches',
-        slug: 'mes-fiches',
+        name: 'Liste par défaut',
+        slug: 'liste-par-defaut',
         icon: 'mdi-book-multiple-outline',
         files: []
       }

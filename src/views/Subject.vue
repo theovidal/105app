@@ -31,18 +31,14 @@ import { getHexa } from '../utils/color'
 export default {
   name: 'Subject',
   components: { FileCard, TopBanner },
-  data () {
-    return {
-      subject: {},
-      files: []
-    }
-  },
-  mounted () {
-    this.subject = this.getSubjectBySlug(this.$route.params.subject)
-    this.files = this.getFilesBySubject(this.$route.params.subject)
-  },
   computed: {
-    ...mapGetters(['getSubjectBySlug', 'getFilesBySubject'])
+    ...mapGetters(['getSubjectBySlug', 'getFilesBySubject']),
+    subject() {
+      return this.getSubjectBySlug(this.$route.params.subject)
+    },
+    files() {
+      return this.getFilesBySubject(this.$route.params.subject)
+    }
   },
   metaInfo () {
     return {

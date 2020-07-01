@@ -179,21 +179,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 import pdf from 'vue-pdf'
+import FilesSlider from '@/views/parts/FilesSlider'
+
 import formats from '@/data/formats'
 import { dateToText } from '@/utils/parsing'
-import { getHexa } from '../utils/color'
-import FilesSlider from './parts/FilesSlider'
+import { getHexa } from '@/utils/color'
 
 export default {
   name: 'File',
   components: { pdf, FilesSlider },
   data () {
     return {
-      subject: {},
-      subjectFiles: [],
-      file: {},
-      url: '',
       zoom: 90,
 
       data: [],
@@ -206,17 +204,10 @@ export default {
       zoomMenu: false,
       infoDialog: false,
 
-      defaultFormat: '',
       formats
     }
   },
-  mounted () {
-    this.subject = this.getSubjectBySlug(this.$route.params.subject)
-    this.subjectFiles = this.getFilesBySubject(this.$route.params.subject)
-    this.file = this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
-    this.url = `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
-
-    this.defaultFormat = this.file.formats[0]
+  mounted() {
     if (this.defaultFormat === 'pdf') {
       this.src = pdf.createLoadingTask(this.url + 'pdf')
 
@@ -235,14 +226,28 @@ export default {
   },
   computed: {
     ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFilesBySubject']),
-    style () {
+    subject() {
+      return this.getSubjectBySlug(this.$route.params.subject)
+    },
+    subjectFiles() {
+      return this.getFilesBySubject(this.$route.params.subject)
+    },
+    file() {
+      return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
+    },
+    url() {
+      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
+    },
+    defaultFormat() {
+      return this.file.formats[0]
+    },
+
+    style() {
       return `width: ${this.zoom}vw`
     }
   },
-  methods: {
-    dateToText
-  },
-  metaInfo () {
+  methods: { dateToText },
+  metaInfo() {
     return {
       title: `${this.subject.name} : ${this.file.name} | 105`,
       meta: [

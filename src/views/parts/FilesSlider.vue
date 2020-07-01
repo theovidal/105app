@@ -32,8 +32,6 @@ export default {
       default: false
     }
   },
-  computed: {
-    ...mapGetters(['getSubjectBySlug'])
-  }
+  computed: mapGetters(['getSubjectBySlug'])
 }
 </script>
