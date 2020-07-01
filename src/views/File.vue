@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-app-bar
       class="contained mb-3"
       dense>
@@ -97,6 +97,31 @@
         <v-spacer/>
         <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
         <v-spacer/>
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <template v-if="isInLibrary">
+              <v-btn
+                icon
+                v-on="on"
+                @click="removeFileFromLibrary(libraryData)">
+                <v-icon>
+                  mdi-text-box-minus-outline</v-icon>
+              </v-btn>
+            </template>
+            <template v-else>
+              <v-btn
+                icon
+                v-on="on"
+                @click="addFileToLibrary(libraryData)">
+                <v-icon>mdi-text-box-plus-outline</v-icon>
+              </v-btn>
+            </template>
+          </template>
+          <span>
+            <template v-if="isInLibrary">Supprimer de la bibliothèque</template>
+            <template v-else>Ajouter à la bibliothèque</template>
+          </span>
+        </v-tooltip>
         <v-menu
           transition="slide-y-transition"
           bottom>
@@ -174,11 +199,11 @@
       <v-spacer/>
       <div>&copy; {{ new Date().getFullYear() }}, Théo Vidal</div>
     </v-footer>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 import pdf from 'vue-pdf'
 import FilesSlider from '@/views/parts/FilesSlider'
@@ -211,7 +236,7 @@ export default {
     if (this.defaultFormat === 'pdf') {
       this.src = pdf.createLoadingTask(this.url + 'pdf')
 
-      this.src.then(pdf => {
+      this.src.promise.then(pdf => {
         this.numPages = pdf.numPages;
       })
     } else if (this.defaultFormat === 'json') {
@@ -225,6 +250,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['library']),
     ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFilesBySubject']),
     subject() {
       return this.getSubjectBySlug(this.$route.params.subject)
@@ -242,11 +268,24 @@ export default {
       return this.file.formats[0]
     },
 
+    isInLibrary() {
+      return this.library.includes(`${this.subject.slug}/${this.file.slug}`)
+    },
+    libraryData() {
+      return {
+        subject: this.subject.slug,
+        file: this.file.slug
+      }
+    },
+
     style() {
       return `width: ${this.zoom}vw`
     }
   },
-  methods: { dateToText },
+  methods: {
+    ...mapActions(['addFileToLibrary', 'removeFileFromLibrary']),
+    dateToText
+  },
   metaInfo() {
     return {
       title: `${this.subject.name} : ${this.file.name} | 105`,

@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <top-banner
       :title="subject.name"
       :icon="subject.icon"
@@ -19,7 +19,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>

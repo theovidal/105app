@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <top-banner title="Matières"/>
     <div class="contained">
       <v-container class="px-0">
@@ -29,7 +29,7 @@
         </v-list>
       </v-container>
     </div>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
