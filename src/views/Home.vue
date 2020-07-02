@@ -8,8 +8,7 @@
           <v-row>
             <v-col cols="12">
               <card gradient>
-                <template #title-prepend>La clé de la réussite</template>
-                <template #title>105 - L'appli</template>
+                <template #title>105app &mdash; Bienvenue</template>
                 <v-img
                   width="50%"
                   src="/img/illustrations/organizer.svg"
@@ -18,6 +17,47 @@
                   Accédez à des fiches de révision sur une grande variété de matières.<br>
                   Ces fiches sont éditées de manière personnelle à partir de cours.
                 </div>
+              </card>
+            </v-col>
+            <v-col cols="12">
+              <card>
+                <template #title>Pour démarrer...</template>
+                <v-expansion-panels
+                  accordion
+                  flat>
+                  <v-expansion-panel
+                    v-for="tip in tips"
+                    :key="`tip--'${tip.title}'`"
+                    style="box-shadow: none">
+                    <v-expansion-panel-header>{{ tip.title }}</v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <p class="text">{{ tip.content }}</p>
+                      <v-row class="mx-0">
+                        <v-spacer/>
+                        <v-btn
+                          v-if="tip.link !== undefined"
+                          :to="tip.link"
+                          text>
+                          Aperçu
+                          <v-icon right>mdi-chevron-right</v-icon>
+                        </v-btn>
+                      </v-row>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </card>
+            </v-col>
+            <v-col cols="12">
+              <card>
+                <template #title>Proposez vos fiches</template>
+                <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
+                <v-btn
+                  href="https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677"
+                  target="_blank"
+                  outlined>
+                  <v-icon left>mdi-open-in-new</v-icon>
+                  Soumettre une fiche
+                </v-btn>
               </card>
             </v-col>
             <v-col cols="12">
@@ -45,18 +85,6 @@
                   color="#D40E0E"
                   outlined>
                   <v-icon left>mdi-youtube</v-icon> YouTube
-                </v-btn>
-              </card>
-            </v-col>
-            <v-col cols="12">
-              <card>
-                <template #title>Proposez vos fiches !</template>
-                <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
-                <v-btn
-                  href="https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677"
-                  outlined>
-                  <v-icon left>mdi-open-in-new</v-icon>
-                  Soumettre une fiche
                 </v-btn>
               </card>
             </v-col>
@@ -88,7 +116,7 @@
             <v-row>
               <v-col
                 v-for="post in news"
-                :key="post.slug"
+                :key="`${post.slug}__news-card`"
                 cols="12"
                 md="6"
                 lg="4"
@@ -119,6 +147,29 @@ export default {
   components: { NewsCard, FileCard },
   data () {
     return {
+      tips: [
+        {
+          title: 'Prenez connaissance des dernières publications',
+          content: "Des fiches sont régulièrement ajoutées sur 105app, et les plus récentes sont affichées sur cette page d'accueil." +
+            "Regardez à droite sur PC ou descendez plus bas sur mobile."
+        },
+        {
+          title: 'Consultez toutes les fiches',
+          content: "L'intégralité des fiches disponibles sur 105app sont répertoriées dans la page des matières, et sont organisées pour une navigation agréable.",
+          link: '/subjects'
+        },
+        {
+          title: 'Recherchez des fiches spécifiques',
+          content: "Vous savez déjà quelle fiche vous souhaitez consulter ? Effectuez une recherche avec les mots clé correspondant et vous la retrouverez !",
+          link: '/search'
+        },
+        {
+          title: 'Ajoutez des fiches à votre bibliothèque',
+          content: "La bibliothèque est personnelle, et vous permet d'y lister les fiches de votre choix. Pour en ajouter une, cliquez sur l'icône de sauvegarde en haut à droite de ladite fiche.",
+          link: '/library'
+        }
+      ],
+
       subjects,
       news
     }
