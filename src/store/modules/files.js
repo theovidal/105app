@@ -24,6 +24,10 @@ const getters = {
   getFileBySlug: state => (subject, slug) => {
     return state[subject].find(file => file.slug === slug)
   },
+  getFileById: (_, getters) => id => {
+    let [subject, slug] = id.split('/')
+    return getters.getFileBySlug(subject, slug)
+  },
   getLastFiles: (state, getters) => {
     let files = getters.getAllFiles.sort((a,b) => {
       const dateA = new Date(a.added).getTime()

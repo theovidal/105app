@@ -198,10 +198,23 @@
     <v-container>
       <v-row>
         <v-col
+          v-if="suggestedFiles.length"
+          cols="12">
+          <p class="display-1 text--primary">
+            <v-icon color="black">mdi-file-star-outline</v-icon>
+            <template v-if="file.suggestions.length > 1">Fiches associées</template>
+            <template v-else>Fiche associée</template>
+          </p>
+          <files-slider
+            :files="suggestedFiles"
+            display-subject/>
+        </v-col>
+        <v-col
+          v-if="subjectFiles.length"
           cols="12">
           <p class="display-1 text--primary">
             <v-icon color="black">mdi-file-multiple-outline</v-icon>
-            {{ subject.name }} : les autres fiches
+            Davantage de fiches ({{ subject.name }})
           </p>
           <files-slider :files="subjectFiles"/>
         </v-col>
@@ -263,12 +276,22 @@ export default {
   },
   computed: {
     ...mapState(['library']),
-    ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFilesBySubject']),
+    ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFileById', 'getFilesBySubject']),
     subject() {
       return this.getSubjectBySlug(this.$route.params.subject)
     },
     subjectFiles() {
-      return this.getFilesBySubject(this.$route.params.subject)
+      return this
+        .getFilesBySubject(this.$route.params.subject)
+        .filter(file => file.slug !== this.file.slug)
+    },
+    suggestedFiles() {
+      if (this.file.suggestions === undefined) return []
+      else {
+        return this.file.suggestions.map(suggestion => {
+          return this.getFileById(suggestion)
+        })
+      }
     },
     file() {
       return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)

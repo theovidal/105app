@@ -31,6 +31,7 @@
     "description": "Énergie, puissance et rendement dans une chaîne de puissance",
     "subject": "si",
     "author": "Théo Vidal",
+    "suggestions": ["physique/aspect-energetique-des-phenomenes-mecaniques"],
     "formats": [
       "pdf",
       "docx"

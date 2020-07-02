@@ -5,6 +5,7 @@
     "description": "Théorème de l'énergie cinétique et énergie mécanique",
     "subject": "physique",
     "author": "Théo Vidal",
+    "suggestions": ["si/comment-evaluer-lefficacite-energetique-dun-systeme"],
     "formats": [
       "pdf",
       "docx"

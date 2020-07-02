@@ -1,4 +1,4 @@
-function loadFiles () {
+function loadFiles() {
   const subjects = require.context(`../data/files`, true, /[A-Za-z0-9-_,\s]+\.json$/i)
   const files = {}
   subjects.keys().forEach(key => {

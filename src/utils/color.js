@@ -6,10 +6,9 @@ function getHexa(color) {
   let converted = '#'
   color.forEach(function(part) {
     let toAdd = part.toString(16)
-    if (toAdd.length == 1) converted += '0'
+    if (toAdd.length === 1) converted += '0'
     converted += toAdd
   })
-  console.log(converted)
   return converted
 }
 
