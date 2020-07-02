@@ -7,7 +7,10 @@ function loadFiles() {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
     if (matched && matched.length > 1) {
       const subject = matched[1]
-      files[subject] = subjects(key).sort(fileSort)
+      files[subject] =
+        subjects(key)
+        .map(file => { return { ...file, subject  }})
+        .sort(fileSort)
     }
   })
   return files

@@ -1,10 +1,10 @@
 {
-  "name": "105 L'appli",
+  "name": "105app",
   "short_name": "105",
   "theme_color": "#79b63d",
   "background_color": "#96d1bc",
   "display": "fullscreen",
-  "Scope": "/",
+  "scope": "/",
   "start_url": "/",
   "icons": [
     {

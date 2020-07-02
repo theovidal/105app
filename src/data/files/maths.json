@@ -3,7 +3,6 @@
     "name": "Suites arithmétiques et géométriques",
     "slug": "suites-arithmetiques-geometriques",
     "description": "Étude de cas particuliers de suites : arithmétiques et géométriques.",
-    "subject": "maths",
     "author": "Théo Vidal",
     "formats": [
       "pdf",
@@ -16,7 +15,6 @@
     "name": "Dérivation",
     "slug": "derivation",
     "description": "Taux d'accroissement, nombre dérivé, tangente et fonction dérivée",
-    "subject": "maths",
     "author": "Théo Vidal",
     "formats": [
       "pdf",

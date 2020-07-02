@@ -11,5 +11,5 @@ export default {
   vue: { name: 'Composant Vue.js', icon: 'mdi-vuejs' },
 
   csv: { name: 'Liste CSV', icon: 'mdi-format-list-text' },
-  json: { name: 'Code JSON', icon: 'code-json' }
+  json: { name: 'Code JSON', icon: 'mdi-code-json' }
 }

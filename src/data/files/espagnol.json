@@ -1,7 +1,7 @@
 [
   {
     "name": "Vocabulaire de la description morale",
-    "slug": "la-description-morale",
+    "slug": "vocabulaire-de-la-description-morale",
     "description": "Mots-clés permettant de décrire moralement une personne.",
     "subject": "espagnol",
     "author": "Théo Vidal",
@@ -9,6 +9,6 @@
       "json"
     ],
     "level": "2nde",
-    "added": "2018-07-27"
+    "added": "2018-09-27"
   }
 ]
