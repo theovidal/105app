@@ -49,17 +49,6 @@
               </card>
             </v-col>
             <v-col cols="12">
-              <card gradient-border>
-                <v-img
-                  #title-prepend
-                  width="50%"
-                  src="/img/illustrations/surf.svg"
-                  alt="Home"/>
-                <template #title>Les vacances d'été sont arrivées !</template>
-                <p>Reposez-vous, partez découvrir de nouveaux lieux, et revenez sur 105app juste avant la rentrée pour repartir sur le bon pied!</p>
-              </card>
-            </v-col>
-            <v-col cols="12">
               <card>
                 <template #title>Proposez vos fiches !</template>
                 <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
@@ -92,6 +81,23 @@
             </v-col>
           </v-row>
         </v-col>
+        <v-col cols="12">
+          <p class="display-1 text--primary">
+            <v-icon color="black">mdi-post-outline</v-icon>
+            Actualités de 105app
+            <v-row>
+              <v-col
+                v-for="post in news"
+                :key="post.slug"
+                cols="12"
+                md="6"
+                lg="4"
+                xl="3">
+                <news-card :post="post"/>
+              </v-col>
+            </v-row>
+          </p>
+        </v-col>
       </v-row>
     </v-container>
   </v-main>
@@ -99,16 +105,22 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
+import FileCard from '@/views/parts/FileCard'
+import NewsCard from '@/views/parts/NewsCard'
+
 import subjects from '@/data/subjects'
+import news from '@/data/news'
 import { getGradient } from '@/utils/color'
-import FileCard from './parts/FileCard'
+
 
 export default {
   name: 'Home',
-  components: { FileCard },
+  components: { NewsCard, FileCard },
   data () {
     return {
-      subjects
+      subjects,
+      news
     }
   },
   computed: mapGetters(['getLastFiles', 'getSubjectBySlug']),
