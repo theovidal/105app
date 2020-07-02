@@ -1,7 +1,7 @@
 <template>
   <card
     :to="`/subjects/${subject.slug}/${file.slug}`"
-    :color="getHexa(subject.color)"
+    :color="subject.color"
     center>
     <template #title>{{ file.name }}</template>
     <template #subtitle>{{ subject.name }} &mdash; {{ file.level }}</template>
@@ -30,10 +30,7 @@ export default {
       type: Object,
       required: true
     },
-    displaySubject: {
-      type: Boolean,
-      default: false
-    }
+    displaySubject: Boolean
   },
   methods: {
     dateToText,

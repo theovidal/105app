@@ -1,2 +1,16 @@
-.v-card
+$border-radius = 24px !important
+
+.card
+  border-radius: $border-radius
   box-shadow: 0.25rem 0.25rem 1.25rem rgba(146,125,160,0.2) !important
+  background: white
+
+  .v-card__text
+    border-radius: $border-radius - 2px !important
+    background: var(--v-sheets-base)
+
+.v-card--link:before
+  border-radius: $border-radius
+
+.v-dialog > .card > .v-card__text
+  padding-top: 20px

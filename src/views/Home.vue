@@ -49,7 +49,7 @@
               </card>
             </v-col>
             <v-col cols="12">
-              <card>
+              <card gradient-border>
                 <v-img
                   #title-prepend
                   width="50%"
@@ -60,7 +60,7 @@
               </card>
             </v-col>
             <v-col cols="12">
-              <card gradient>
+              <card>
                 <template #title>Proposez vos fiches !</template>
                 <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
                 <v-btn

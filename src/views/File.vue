@@ -3,7 +3,7 @@
     <v-app-bar
       class="contained mb-3"
       elevation="0"
-      style="border-bottom: 1px solid rgba(0, 0, 0, .12)"
+      :style="{ 'border-bottom': '1px solid rgba(0, 0, 0, .12)', background: getHexa(subject.color) + ' !important', color: 'white' }"
       dense>
       <template v-if="zoomMenu">
         <v-btn
@@ -23,6 +23,7 @@
           open-delay="500">
           <template #activator="{ on }">
             <v-btn
+              color="white"
               icon
               v-on="on"
               @click="zoomMenu = true">
@@ -36,6 +37,7 @@
           open-delay="500">
           <template #activator="{ on }">
             <v-btn
+              color="white"
               icon
               v-on="on"
               @click="rotate += 90">
@@ -53,6 +55,7 @@
               open-delay="500">
               <template #activator="{ on: tooltip }">
                 <v-btn
+                  color="white"
                   icon
                   v-on="{ ...tooltip, ...dialog }">
                   <v-icon>mdi-information-outline</v-icon>
@@ -61,44 +64,44 @@
               <span>Informations</span>
             </v-tooltip>
           </template>
-          <v-card>
-            <v-card-text class="pt-4">
-              <strong>Nom :</strong>
-              {{ file.name }}
-              <br>
+          <card gradient-border>
+            <template #title>
+              <span class="pt-4">Informations sur la fiche</span>
+            </template>
+            <strong>Nom :</strong>
+            {{ file.name }}
+            <br>
 
-              <strong>Description : </strong>
-              <span v-html="file.description"/>
-              <br>
+            <strong>Description : </strong>
+            <span v-html="file.description"/>
+            <br>
 
-              <strong>Auteur : </strong>
-              {{ file.author }}
-              <br>
+            <strong>Auteur : </strong>
+            {{ file.author }}
+            <br>
 
-              <strong>Ajoutée le :</strong>
-              {{ dateToText(file.added) }}
-              <br>
+            <strong>Ajoutée le :</strong>
+            {{ dateToText(file.added) }}
+            <br>
 
-              <strong>Niveau (indicatif) :</strong>
-              {{ file.level }}
-              <br>
+            <strong>Niveau (indicatif) :</strong>
+            {{ file.level }}
+            <br>
 
-              <strong>Matière :</strong>
-              <v-icon>{{ subject.icon }}</v-icon>
-              {{ subject.name }}
-              <br>
-            </v-card-text>
-
-            <v-divider/>
-
-            <v-card-actions>
-              <v-spacer/>
-              <v-btn
-                color="primary"
-                text
-                @click="infoDialog = false">Fermer</v-btn>
-            </v-card-actions>
-          </v-card>
+            <strong>Matière :</strong>
+            <v-icon>{{ subject.icon }}</v-icon>
+            {{ subject.name }}
+            <br>
+            <template #actions>
+              <v-card-actions>
+                <v-spacer/>
+                <v-btn
+                  color="white"
+                  text
+                  @click="infoDialog = false">Fermer</v-btn>
+              </v-card-actions>
+            </template>
+          </card>
         </v-dialog>
         <v-spacer/>
         <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
@@ -107,6 +110,7 @@
           <template #activator="{ on }">
             <template v-if="isInLibrary">
               <v-btn
+                color="white"
                 icon
                 v-on="on"
                 @click="removeFileFromLibrary(libraryData)">
@@ -116,6 +120,7 @@
             </template>
             <template v-else>
               <v-btn
+                color="white"
                 icon
                 v-on="on"
                 @click="addFileToLibrary(libraryData)">
@@ -137,6 +142,7 @@
               open-delay="500">
               <template #activator="{ on: tooltip }">
                 <v-btn
+                  color="white"
                   icon
                   v-on="{...tooltip, ...menu }">
                   <v-icon>mdi-download-outline</v-icon>
@@ -194,7 +200,7 @@
         <v-col
           cols="12">
           <p class="display-1 text--primary">
-            <v-icon>mdi-file-multiple-outline</v-icon>
+            <v-icon color="black">mdi-file-multiple-outline</v-icon>
             {{ subject.name }} : les autres fiches
           </p>
           <files-slider :files="subjectFiles"/>
@@ -290,7 +296,8 @@ export default {
   },
   methods: {
     ...mapActions(['addFileToLibrary', 'removeFileFromLibrary']),
-    dateToText
+    dateToText,
+    getHexa
   },
   metaInfo() {
     return {
