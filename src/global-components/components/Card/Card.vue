@@ -3,6 +3,7 @@
     :class="{ gradient: gradient || gradientBorder }"
     :style="style"
     :to="to"
+    :href="href"
     class="card">
     <v-card-text :class="{ gradient: gradient && !gradientBorder }">
       <slot name="title-prepend"/>
@@ -32,6 +33,7 @@ export default {
     color: Array,
     gradient: Boolean,
     gradientBorder: Boolean,
+    href: String,
     to: String
   },
   computed: {

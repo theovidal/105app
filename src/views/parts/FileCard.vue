@@ -1,6 +1,7 @@
 <template>
   <card
-    :to="`/subjects/${subject.slug}/${file.slug}`"
+    :to="useHref ? null : url"
+    :href="useHref ? url : null"
     :color="subject.color"
     center>
     <template #title>{{ file.name }}</template>
@@ -35,7 +36,13 @@ export default {
       type: Object,
       required: true
     },
-    displaySubject: Boolean
+    displaySubject: Boolean,
+    useHref: Boolean
+  },
+  computed: {
+    url() {
+      return `/subjects/${this.subject.slug}/${this.file.slug}`
+    }
   },
   methods: {
     dateToText,

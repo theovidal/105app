@@ -201,13 +201,16 @@
           v-if="suggestedFiles.length"
           cols="12">
           <p class="display-1 text--primary">
-            <v-icon color="black">mdi-file-star-outline</v-icon>
+            <v-icon
+              left
+              color="black">mdi-file-star-outline</v-icon>
             <template v-if="file.suggestions.length > 1">Fiches associées</template>
             <template v-else>Fiche associée</template>
           </p>
           <files-slider
             :files="suggestedFiles"
-            display-subject/>
+            display-subject
+            use-href/>
         </v-col>
         <v-col
           v-if="subjectFiles.length"
@@ -216,7 +219,9 @@
             <v-icon color="black">mdi-file-multiple-outline</v-icon>
             Davantage de fiches ({{ subject.name }})
           </p>
-          <files-slider :files="subjectFiles"/>
+          <files-slider
+            :files="subjectFiles"
+            use-href/>
         </v-col>
       </v-row>
     </v-container>
@@ -258,6 +263,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.src)
     if (this.defaultFormat === 'pdf') {
       this.src = pdf.createLoadingTask(this.url + 'pdf')
 

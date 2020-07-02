@@ -10,7 +10,8 @@
       <file-card
         :file="file"
         :subject="getSubjectBySlug(file.subject)"
-        :display-subject="displaySubject"/>
+        :display-subject="displaySubject"
+        :use-href="useHref"/>
     </v-col>
   </v-row>
 </template>
@@ -27,10 +28,8 @@ export default {
       type: Array,
       required: true
     },
-    displaySubject: {
-      type: Boolean,
-      default: false
-    }
+    displaySubject: Boolean,
+    useHref: Boolean
   },
   computed: mapGetters(['getSubjectBySlug'])
 }
