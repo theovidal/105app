@@ -1,3 +1,5 @@
+import { fileSort } from '@/utils/sorting'
+
 function loadFiles() {
   const subjects = require.context(`../data/files`, true, /[A-Za-z0-9-_,\s]+\.json$/i)
   const files = {}
@@ -5,7 +7,7 @@ function loadFiles() {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
     if (matched && matched.length > 1) {
       const subject = matched[1]
-      files[subject] = subjects(key)
+      files[subject] = subjects(key).sort(fileSort)
     }
   })
   return files

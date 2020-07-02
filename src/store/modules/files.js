@@ -1,4 +1,5 @@
-import { loadFiles } from '../../utils/storage'
+import { loadFiles } from '@/utils/storage'
+import { fileSort } from '@/utils/sorting'
 
 const state = loadFiles()
 
@@ -11,15 +12,13 @@ const getters = {
         ...state[subject]
       ]
     }
+    files.sort(fileSort)
     return files
   },
   getFilesBySubject: state => subject => {
     let files = state[subject]
-    if (files === undefined) {
-      return []
-    } else {
-      return files
-    }
+    if (files === undefined) return []
+    else return files
   },
   getFileBySlug: state => (subject, slug) => {
     return state[subject].find(file => file.slug === slug)
@@ -29,11 +28,7 @@ const getters = {
     return getters.getFileBySlug(subject, slug)
   },
   getLastFiles: (state, getters) => {
-    let files = getters.getAllFiles.sort((a,b) => {
-      const dateA = new Date(a.added).getTime()
-      const dateB = new Date(b.added).getTime()
-      return (dateA > dateB) ? -1 : ((dateB > dateA) ? 1 : 0)
-    })
+    let files = getters.getAllFiles.sort(fileSort)
     return files.slice(0, 5)
   },
   searchFiles: (state, getters) => (query, subjects) => {
