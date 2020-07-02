@@ -225,10 +225,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-footer class="background">
-      <v-spacer/>
-      <div>&copy; {{ new Date().getFullYear() }}, Théo Vidal</div>
-    </v-footer>
   </v-main>
 </template>
 

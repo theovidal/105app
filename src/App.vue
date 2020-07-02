@@ -14,6 +14,23 @@
         <v-icon>{{ page.icon }}</v-icon>
       </v-btn>
     </v-bottom-navigation>
+
+    <v-footer
+      style="margin-bottom: 68.4px"
+      class="gradient">
+      <v-row>
+        <v-col
+          class="text-right"
+          cols="12">
+          <a
+            style="color: inherit"
+            href="https://github.com/theovidal/105app/blob/master/LICENSE"
+            target="_blank">
+            &copy; {{ new Date().getFullYear() }}, Théo Vidal
+          </a>
+        </v-col>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 
