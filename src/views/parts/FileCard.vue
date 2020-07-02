@@ -4,7 +4,12 @@
     :color="subject.color"
     center>
     <template #title>{{ file.name }}</template>
-    <template #subtitle>{{ subject.name }} &mdash; {{ file.level }}</template>
+    <template #subtitle>
+      <template v-if="displaySubject">
+        {{ subject.name }} &mdash;
+      </template>
+      {{ file.level }}
+    </template>
     <div
       class="text--primary"
       v-html="file.description"/>
