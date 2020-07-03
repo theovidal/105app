@@ -125,13 +125,11 @@ export default {
     },
     subjects() {
       let subjects = []
-      if (this.chosenSubjects.length === 0) {
-        subjects = Object.values(this.availableSubjects)
-      } else {
+      if (this.chosenSubjects.length) {
         this.chosenSubjects.forEach((value) => {
           subjects.push(this.availableSubjects[value])
         })
-      }
+      } else subjects = Object.values(this.availableSubjects)
       return subjects
     },
     url() {

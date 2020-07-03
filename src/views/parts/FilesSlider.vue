@@ -3,7 +3,7 @@
     <v-col
       v-for="file in files"
       :key="`${file.subject}/${file.slug}__card`"
-      cols="11"
+      :cols="files.length > 1 ? 11 : 12"
       md="4"
       sm="6"
       lg="3">

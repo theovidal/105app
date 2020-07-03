@@ -1,6 +1,5 @@
 <template>
   <v-row
-    :style="style"
     justify="center"
     align="center">
     <v-col

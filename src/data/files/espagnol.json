@@ -6,7 +6,8 @@
     "subject": "espagnol",
     "author": "Théo Vidal",
     "formats": [
-      "json"
+      "json",
+      "csv"
     ],
     "level": "2nde",
     "added": "2018-09-27"

@@ -26,6 +26,20 @@
           open-delay="500">
           <template #activator="{ on }">
             <v-btn
+              :to="{ name: 'subject', params: { subject: file.subject } }"
+              color="white"
+              icon
+              v-on="on">
+              <v-icon>mdi-arrow-left</v-icon>
+            </v-btn>
+          </template>
+          <span>Retour à la liste des fiches</span>
+        </v-tooltip>
+        <v-tooltip
+          bottom
+          open-delay="500">
+          <template #activator="{ on }">
+            <v-btn
               color="white"
               icon
               v-on="on"
@@ -169,6 +183,11 @@
         </v-menu>
       </template>
     </v-app-bar>
+    <v-container v-if="!loaded">
+      <v-progress-linear
+        indeterminate
+        :color="getHexa(subject.color)"/>
+    </v-container>
     <v-row justify="center">
       <template v-if="defaultFormat === 'pdf'">
         <pdf
@@ -254,6 +273,7 @@ export default {
       src: '',
       rotate: 0,
       numPages: undefined,
+      loaded: false,
 
       zoomMenu: false,
       infoDialog: false,
@@ -266,7 +286,8 @@ export default {
       this.src = pdf.createLoadingTask(this.url + 'pdf')
 
       this.src.promise.then(pdf => {
-        this.numPages = pdf.numPages;
+        this.numPages = pdf.numPages
+        this.loaded = true
       })
     } else if (this.defaultFormat === 'json') {
       fetch(this.url + 'json')
@@ -276,6 +297,7 @@ export default {
         .then(data => {
           this.data = data
         })
+      this.loaded = true
     }
   },
   computed: {

@@ -18,14 +18,7 @@ function loadFiles() {
 
 function loadFromStorage(category) {
   let defaults = {
-    library: [
-      {
-        name: 'Liste par défaut',
-        slug: 'liste-par-defaut',
-        icon: 'mdi-book-multiple-outline',
-        files: []
-      }
-    ]
+    library: []
   }
 
   let data = localStorage.getItem(category)

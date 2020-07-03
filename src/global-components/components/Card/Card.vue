@@ -34,7 +34,7 @@ export default {
     gradient: Boolean,
     gradientBorder: Boolean,
     href: String,
-    to: String
+    to: [String, Object]
   },
   computed: {
     style() {
