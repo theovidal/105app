@@ -4,11 +4,12 @@
 
     <v-bottom-navigation
       :value="activePage"
+      style="border-top: 1px solid rgba(0, 0, 0, .12)"
       color="primary"
       app>
       <v-btn
         v-for="page in pages"
-        :key="page.link"
+        :key="`${page.name}__navigation-item`"
         :to="page.link">
         <span>{{ page.name }}</span>
         <v-icon>{{ page.icon }}</v-icon>
@@ -25,6 +26,7 @@
           <a
             style="color: inherit"
             href="https://github.com/theovidal/105app/blob/master/LICENSE"
+            rel="noreferrer"
             target="_blank">
             &copy; {{ new Date().getFullYear() }}, Théo Vidal
           </a>

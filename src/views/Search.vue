@@ -72,7 +72,7 @@
             </p>
           </v-row>
         </template>
-        <template v-else-if="files.length === 0">
+        <template v-else-if="!files.length">
           <v-row
             style="flex-direction: column"
             class="mx-0 px-2"
@@ -88,7 +88,7 @@
         <template v-else>
           <v-col
             v-for="file in files"
-            :key="file.slug"
+            :key="`${file.subject}/${file.slug}__search-result`"
             cols="12"
             md="6"
             sm="4"

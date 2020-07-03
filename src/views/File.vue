@@ -7,6 +7,7 @@
       dense>
       <template v-if="zoomMenu">
         <v-btn
+          color="white"
           icon
           @click="zoomMenu = false">
           <v-icon>mdi-close</v-icon>
@@ -14,6 +15,8 @@
         <v-slider
           v-model="zoom"
           style="height: 30px"
+          color="white"
+          track-color="grey lighten-1"
           min="10"
           max="100"/>
       </template>
@@ -170,7 +173,7 @@
       <template v-if="defaultFormat === 'pdf'">
         <pdf
           v-for="i in numPages"
-          :key="`${file.subject}-${file.slug}-${i}`"
+          :key="`${file.subject}/${file.slug}--${i}`"
           :src="src"
           :page="i"
           :rotate="rotate"
@@ -259,7 +262,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.src)
     if (this.defaultFormat === 'pdf') {
       this.src = pdf.createLoadingTask(this.url + 'pdf')
 

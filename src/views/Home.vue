@@ -52,6 +52,7 @@
                 <template #title>Proposez vos fiches</template>
                 <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
                 <v-btn
+                  rel="noreferrer"
                   href="https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677"
                   target="_blank"
                   outlined>

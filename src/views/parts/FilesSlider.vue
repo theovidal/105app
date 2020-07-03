@@ -2,7 +2,7 @@
   <v-row style="flex-wrap: nowrap; overflow-x: scroll">
     <v-col
       v-for="file in files"
-      :key="file.slug"
+      :key="`${file.subject}/${file.slug}__card`"
       cols="11"
       md="4"
       sm="6"
