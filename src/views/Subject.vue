@@ -5,32 +5,22 @@
       :icon="subject.icon"
       :color="subject.color"/>
     <v-container class="contained">
-      <v-row>
-        <v-col
-          v-for="file in files"
-          :key="file.slug"
-          cols="12"
-          md="6"
-          sm="4"
-          lg="3">
-          <file-card
-            :file="file"
-            :subject="subject"/>
-        </v-col>
-      </v-row>
+      <files-grid
+        :files="files"
+        :subject="subject"/>
     </v-container>
   </v-main>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import FileCard from './parts/FileCard'
-import TopBanner from './parts/TopBanner'
-import { getHexa } from '../utils/color'
+import TopBanner from '@/views/parts/TopBanner'
+import FilesGrid from '@/views/parts/FilesGrid'
+import { getHexa } from '@/utils/color'
 
 export default {
   name: 'Subject',
-  components: { FileCard, TopBanner },
+  components: { FilesGrid, TopBanner },
   computed: {
     ...mapGetters(['getSubjectBySlug', 'getFilesBySubject']),
     subject() {
