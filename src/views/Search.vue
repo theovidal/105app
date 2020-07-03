@@ -56,35 +56,16 @@
             </v-col>
           </v-row>
         </v-col>
-        <template v-if="query === ''">
-          <v-row
-            style="flex-direction: column"
-            class="mx-0"
-            align="center">
-            <v-img
-              width="20vw"
-              src="/img/illustrations/search.svg"
-              alt="Not found"/>
-            <p class="title">Recherchez des fiches</p>
-            <p class="subtitle text-center">
-              Commencez à taper un mot-clé et les fiches correspondantes s'afficheront.<br>
-              Vous pouvez aussi définir quelles matières sont concernées par votre recherche.
-            </p>
-          </v-row>
-        </template>
-        <template v-else-if="!files.length">
-          <v-row
-            style="flex-direction: column"
-            class="mx-0 px-2"
-            align="center">
-            <v-img
-              width="20vw"
-              src="/img/illustrations/not-found.svg"
-              alt="Not found"/>
-            <p class="title">Aucun résultat !</p>
-            <p class="subtitle text-center">Essayez de relancer la recherche avec d'autres mots-clés.</p>
-          </v-row>
-        </template>
+        <illustration
+          v-if="query === ''"
+          image="/img/illustrations/search.svg"
+          title="Recherchez des fiches"
+          subtitle="Commencez à taper un mot-clé et les fiches correspondantes s'afficheront.<br>Vous pouvez aussi définir quelles matières sont concernées par votre recherche."/>
+        <illustration
+          v-else-if="!files.length"
+          image="/img/illustrations/not-found.svg"
+          title="Aucun résultat !"
+          subtitle="Essayez de relancer la recherche avec d'autres mots-clés."/>
         <template v-else>
           <v-col
             v-for="file in files"

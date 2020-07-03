@@ -10,18 +10,11 @@
             :files="getLibraryFiles"
             display-subject/>
         </v-col>
-        <v-row
+        <illustration
           v-else
-          style="flex-direction: column"
-          class="mx-0 px-2"
-          align="center">
-          <v-img
-            width="20vw"
-            src="/img/illustrations/not-found.svg"
-            alt="Not found"/>
-          <p class="title">Votre bibliothèque est vide</p>
-          <p class="subtitle text-center">Complétez-la à l'aide de l'icône en haut à droite de n'importe quelle fiche !</p>
-        </v-row>
+          image="/img/illustrations/not-found.svg"
+          title="Votre bibliothèque est vide"
+          subtitle="Complétez-la à l'aide de l'icône en haut à droite de n'importe quelle fiche !"/>
       </v-row>
     </v-container>
   </v-main>
