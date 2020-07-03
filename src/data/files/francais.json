@@ -3,7 +3,7 @@
     "name": "Fiche auteurs et oeuvres",
     "slug": "fiche-auteurs-et-oeuvres",
     "description": "Récapitulatif des oeuvres et auteurs vus pour les quatre séquences (1°5).",
-    "subject": "francais",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "docx"

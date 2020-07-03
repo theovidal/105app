@@ -1,6 +1,5 @@
-.contained
-  padding-right: env(safe-area-inset-right) !important
-  padding-left: env(safe-area-inset-left) !important
+.v-main__wrap
+  min-height: 79vh
 
 @css {
   @supports(padding: max(0px)) {
@@ -11,6 +10,14 @@
       margin-top: 15px;
       margin-bottom: max(15px, env(safe-area-inset-bottom));
       height: auto;
+    }
+    .contained:not(.fluid) {
+      padding-right: max(12px, env(safe-area-inset-right)) !important;
+      padding-left: max(12px, env(safe-area-inset-left)) !important;
+    }
+    .contained.fluid {
+      padding-right: env(safe-area-inset-right) !important;
+      padding-left: env(safe-area-inset-left) !important;
     }
   }
 }

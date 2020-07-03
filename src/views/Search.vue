@@ -1,5 +1,5 @@
 <template>
-  <v-content class="contained">
+  <v-main class="contained">
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -56,39 +56,20 @@
             </v-col>
           </v-row>
         </v-col>
-        <template v-if="query === ''">
-          <v-row
-            style="flex-direction: column"
-            class="mx-0"
-            align="center">
-            <v-img
-              width="20vw"
-              src="/img/illustrations/search.svg"
-              alt="Not found"/>
-            <p class="title">Recherchez des fiches</p>
-            <p class="subtitle text-center">
-              Commencez à taper un mot-clé et les fiches correspondantes s'afficheront.<br>
-              Vous pouvez aussi définir quelles matières sont concernées par votre recherche.
-            </p>
-          </v-row>
-        </template>
-        <template v-else-if="files.length === 0">
-          <v-row
-            style="flex-direction: column"
-            class="mx-0 px-2"
-            align="center">
-            <v-img
-              width="20vw"
-              src="/img/illustrations/not-found.svg"
-              alt="Not found"/>
-            <p class="title">Aucun résultat !</p>
-            <p class="subtitle text-center">Essayez de relancer la recherche avec d'autres mots-clés.</p>
-          </v-row>
-        </template>
+        <illustration
+          v-if="query === ''"
+          image="/img/illustrations/search.svg"
+          title="Recherchez des fiches"
+          subtitle="Commencez à taper un mot-clé et les fiches correspondantes s'afficheront.<br>Vous pouvez aussi définir quelles matières sont concernées par votre recherche."/>
+        <illustration
+          v-else-if="!files.length"
+          image="/img/illustrations/not-found.svg"
+          title="Aucun résultat !"
+          subtitle="Essayez de relancer la recherche avec d'autres mots-clés."/>
         <template v-else>
           <v-col
             v-for="file in files"
-            :key="file.slug"
+            :key="`${file.subject}/${file.slug}__search-result`"
             cols="12"
             md="6"
             sm="4"
@@ -101,17 +82,17 @@
         </template>
       </v-row>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import FileCard from './parts/FileCard'
 
 export default {
   name: 'Search',
   components: { FileCard },
-  data () {
+  data() {
     return {
       query: '',
       availableSubjects: {},
@@ -119,7 +100,7 @@ export default {
       loaded: false
     }
   },
-  mounted () {
+  mounted() {
     if (this.$route.query.q !== undefined) {
       this.query = this.$route.query.q
     }
@@ -129,34 +110,35 @@ export default {
         this.chosenSubjects.push(this.getSubjectBySlug(subject).name)
       })
     }
-    this.getAllSubjects.forEach((subject) => {
+    this.defaultSubjects.forEach((subject) => {
       this.availableSubjects[subject.name] = subject.slug
     })
     this.loaded = true
   },
   computed: {
-    ...mapGetters(['searchFiles', 'getSubjectBySlug', 'getAllSubjects']),
-    files () {
+    ...mapState({
+      defaultSubjects: 'subjects'
+    }),
+    ...mapGetters(['searchFiles', 'getSubjectBySlug']),
+    files() {
       return this.searchFiles(this.query, this.subjects)
     },
-    subjects () {
+    subjects() {
       let subjects = []
-      if (this.chosenSubjects.length === 0) {
-        subjects = Object.values(this.availableSubjects)
-      } else {
+      if (this.chosenSubjects.length) {
         this.chosenSubjects.forEach((value) => {
           subjects.push(this.availableSubjects[value])
         })
-      }
+      } else subjects = Object.values(this.availableSubjects)
       return subjects
     },
-    url () {
+    url() {
       let query = this.query
       let subjects = this.chosenSubjects.length === 0 ? 'all' : this.subjects.join(',')
       return `?q=${query}&s=${subjects}`
     }
   },
-  metaInfo () {
+  metaInfo() {
     let title = this.query === '' ? 'Recherche' : `Résultat de recherche : ${this.query}`
     return {
       title: `${title} | 105`

@@ -2,9 +2,13 @@
 .v-list
 .background
   background: var(--v-background-base) !important
-.v-sheet
+.v-toolbar
 .v-navigation-drawer
+.v-list.v-sheet
   background: var(--v-sheets-base) !important
+
+.v-btn:not(.v-btn--text):not(.v-btn--outlined).v-btn--active:before
+  opacity: 0
 
 @css {
   .translucent {

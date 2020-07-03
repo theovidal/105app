@@ -3,7 +3,10 @@
     "name": "Aspect énergétique des phénomènes mécaniques",
     "slug": "aspect-energetique-des-phenomenes-mecaniques",
     "description": "Théorème de l'énergie cinétique et énergie mécanique",
-    "subject": "physique",
+    "author": "Théo Vidal",
+    "suggestions": [
+      "si/comment-evaluer-lefficacite-energetique-dun-systeme"
+    ],
     "formats": [
       "pdf",
       "docx"
@@ -15,7 +18,7 @@
     "name": "Les ondes mécaniques",
     "slug": "les-ondes-mecaniques",
     "description": "Le phénomène d'onde mécanique progressive, sa mesure et sa double périodicité",
-    "subject": "physique",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "docx"

@@ -3,7 +3,7 @@
     "name": "Les systèmes productifs en France",
     "slug": "les-systemes-productifs-en-france",
     "description": "Organisation des espaces productifs au niveau de la France",
-    "subject": "geographie",
+    "author": "Théo Vidal",
     "formats": [
       "pdf",
       "xmind"

@@ -4,7 +4,7 @@
     :class="{ 'top-banner__tall': tall, gradient: color !== [] }"
     :style="color !== [] ? `background: ${getGradient(color)} !important` : ''">
     <v-icon
-      v-if="$vuetify.breakpoint.mdAndUp && icon !== null"
+      v-if="$vuetify.breakpoint.smAndUp && icon !== null"
       color="white"
       size="70px">{{ icon }}</v-icon>
     <h1 class="white--text">{{ title }}</h1>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getGradient } from '../../utils/color'
+import { getGradient } from '@/utils/color'
 
 export default {
   props: {
@@ -25,18 +25,9 @@ export default {
       type: String,
       required: true,
     },
-    subtitle: {
-      type: String,
-      default: null
-    },
-    icon: {
-      type: String,
-      default: null
-    },
-    tall: {
-      type: Boolean,
-      default: false
-    },
+    subtitle: String,
+    icon: String,
+    tall: Boolean,
     color: {
       type: Array,
       default () {

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import files from './modules/files'
+import library from './modules/library'
 import subjects from './modules/subjects'
 
 Vue.use(Vuex)
@@ -13,6 +14,7 @@ const actions = {}
 
 const modules = {
   files,
+  library,
   subjects
 }
 

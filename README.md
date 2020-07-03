@@ -1,17 +1,18 @@
 <div align="center">
-  <img src="./public/img/logo.png" alt="Highest logo" height="120">
-  <h3>Vue.js template used by Highest</h3>
-  <a href="https://highest.netlify.com">Website</a>
+  <img src="./public/img/icons/icon-512x512.png" alt="105app logo" height="120">
+  <h3>Revise the best way</h3>
+  <a href="https://105app.exybo.re">Website</a>
   <br>
-  <a href="https://github.com/highest-app/template/blob/master/.LICENSE">
-    <img src="https://img.shields.io/github/license/highest-app/highest" alt="License"/>
+  <a href="https://github.com/theovidal/105app/blob/master/.LICENSE">
+    <img src="https://img.shields.io/github/license/theovidal/105app" alt="License"/>
   </a>
-  <a href="https://github.com/highest-app/template/issues">
-    <img src="https://img.shields.io/github/issues/exybore/highest" alt="Opened issues"/>
+  <a href="https://github.com/theovidal/105app/issues">
+    <img src="https://img.shields.io/github/issues/theovidal/105app" alt="Opened issues"/>
   </a>
 </div>
 
 - [🌈 How it works](#-how-it-works)
+- [📬 Adding files](#-adding-files)
 - [💻 Development](#-development)
   - [Environment setup](#environment-setup)
   - [Building the app](#building-the-app)
@@ -22,25 +23,25 @@
 
 ## 🌈 How it works
 
-It's a really simple template built on top of Vue.js. It includes :
+This simple app stores files in defined formats for example Microsoft Word and PDF, and then displays PDFs or JSON lists to the user. These files are organized by subjects, the user can search files and store them in personal, client-side libraries.
 
-- Vuetify framework (Material Design components)
-- Vue Router
-- Vuex (stores)
-- Service worker and PWA (offline usage)
-- ESLint (code quality)
+French students personally wrote these files that aim to help others during exam revisions.
 
-It's used by [Highest](https://github.com/highest-app/highest) and delivered for everyone to use for various web projects.
+## 📬 Adding files
+
+If you want to add your own file to 105app, head over to [the adding form](https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677) and complete it!
 
 ## 💻 Development
+
+Make sure you have NodeJS 12+ installed on your computer, as well as Git in any form - CLI, UI, GitHub...
 
 ### Environment setup
 
 First of all, clone the repository from GitHub on your local machine : (this requires Git to be installed)
 
 ```bash
-git clone https://github.com/highest-app/template.git  # Using HTTP
-git clone git@github.com:highest-app/template          # Using SSH
+git clone https://github.com/theovidal/105app.git  # Using HTTP
+git clone git@github.com:theovidal/105app          # Using SSH
 ```
 
 Install the required dependencies using your favorite package manager :
@@ -88,7 +89,7 @@ If you want to customize the build configuration, check the [Configuration Refer
 ## 📜 Credits
 
 - Main libraries : [VueJS](https://vuejs.org), [Vuetify](https://vuetifyjs.com)
-- Maintainer : [Exybore](https://github.com/exybore)
+- Maintainer : [Théo Vidal](https://github.com/theovidal)
 
 ## 🔐 License
 

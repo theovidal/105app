@@ -1,27 +1,31 @@
 <template>
-  <v-card
-    :to="`/subjects/${subject.slug}/${file.slug}`">
-    <v-card-text>
-      <p class="display-1 text--primary">{{ file.name }}</p>
-      <p v-if="displaySubject">
-        <v-icon
-          :color="getRgba(subject.color)"
-          left>
-          {{ subject.icon }}
-        </v-icon>
-        {{ subject.name }}
-      </p>
-      <div
-        class="text--primary"
-        v-html="file.description"/>
-      <v-chip>{{ dateToText(file.added) }}</v-chip>&nbsp;
-      <v-chip>{{ file.level }}</v-chip>
-    </v-card-text>
-  </v-card>
+  <card
+    :to="useHref || readonly ? null : url"
+    :href="useHref && !readonly ? url : null"
+    :color="subjectData.color"
+    :aria-readonly="readonly"
+    center>
+    <template #title>{{ file.name }}</template>
+    <template #subtitle>
+      <template v-if="displaySubject">
+        {{ subjectData.name }} &mdash;
+      </template>
+      {{ file.level }}
+    </template>
+    <div
+      class="text--primary"
+      v-html="file.description"/>
+    <span>
+      <v-icon>mdi-clock-outline</v-icon>
+      Ajouté le {{ dateToText(file.added) }} par {{ file.author }}
+    </span>
+    <slot/>
+  </card>
 </template>
 
 <script>
-import { getRgba } from '@/utils/color'
+import { mapGetters } from 'vuex'
+import { getRgba, getHexa } from '@/utils/color'
 import { dateToText } from '@/utils/parsing'
 
 export default {
@@ -31,18 +35,24 @@ export default {
       type: Object,
       required: true
     },
-    subject: {
-      type: Object,
-      required: true
+    subject: Object,
+    readonly: Boolean,
+    displaySubject: Boolean,
+    useHref: Boolean
+  },
+  computed: {
+    ...mapGetters(['getSubjectBySlug']),
+    url() {
+      return `/subjects/${this.file.subject}/${this.file.slug}`
     },
-    displaySubject: {
-      type: Boolean,
-      default: false
+    subjectData() {
+      return this.subject === undefined ? this.getSubjectBySlug(this.file.subject) : this.subject
     }
   },
   methods: {
     dateToText,
-    getRgba
+    getRgba,
+    getHexa
   }
 }
 </script>
