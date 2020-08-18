@@ -33,7 +33,7 @@
                     style="box-shadow: none">
                     <v-expansion-panel-header>{{ tip.title }}</v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <p class="text">{{ tip.content }}</p>
+                      <p>{{ tip.content }}</p>
                       <v-row class="mx-0">
                         <v-spacer/>
                         <v-btn
