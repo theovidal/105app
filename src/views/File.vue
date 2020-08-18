@@ -217,7 +217,7 @@
         </v-card>
       </template>
     </v-row>
-    <v-container>
+    <v-container class="contained">
       <v-row>
         <v-col
           v-if="suggestedFiles.length"

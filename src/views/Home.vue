@@ -1,6 +1,6 @@
 <template>
-  <v-main class="contained">
-    <v-container>
+  <v-main>
+    <v-container class="contained">
       <v-row>
         <v-col
           cols="12"
