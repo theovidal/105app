@@ -5,14 +5,14 @@
       :mini-variant="miniDrawer"
       class="hidden-sm-and-down"
       permanent
-      :style="miniDrawer ? 'width: 60px !important' : ''">
+      :style="miniDrawer && 'width: 60px !important'">
       <v-list
         dense
         nav>
         <v-list-item
           :class="miniDrawer && 'px-0'"
           to="/">
-          <v-list-item-avatar :style="miniDrawer ? 'width: 44px !important; height: 44px !important;' : ''">
+          <v-list-item-avatar :style="miniDrawer && 'width: 44px !important; height: 44px !important;'">
             <img
               src="/favicon.ico"
               alt="Logo de 105app">
@@ -141,17 +141,17 @@
     </v-bottom-navigation>
 
     <v-footer
-      style="margin-bottom: 68.4px"
+      :style="$vuetify.breakpoint.smAndDown && 'margin-bottom: 68.4px'"
       class="gradient">
       <v-row>
         <v-col
           class="text-right"
           cols="12">
           <a
-            style="color: inherit"
             href="https://github.com/theovidal/105app/blob/master/LICENSE"
             rel="noreferrer"
-            target="_blank">
+            target="_blank"
+            class="black--text">
             &copy; {{ new Date().getFullYear() }}, Théo Vidal
           </a>
         </v-col>
@@ -174,7 +174,7 @@ export default {
         { name: 'Bibliothèque', icon: 'mdi-book-multiple-outline', link: '/library' },
       ],
       search: '',
-      miniDrawer: false,
+      miniDrawer: this.$vuetify.breakpoint.mdOnly,
 
       subjects
     }

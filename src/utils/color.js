@@ -17,7 +17,7 @@ function getLighter1(color) {
 }
 
 function getLighter2(color) {
-  return getRgba(color, 0.45)
+  return getRgba(color, 0.55)
 }
 
 function getGradient(color) {

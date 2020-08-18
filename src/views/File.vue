@@ -50,6 +50,7 @@
           <span>Niveau de zoom</span>
         </v-tooltip>
         <v-tooltip
+          v-if="defaultFormat === 'pdf'"
           bottom
           open-delay="500">
           <template #activator="{ on }">
@@ -225,7 +226,7 @@
           <p class="display-1 text--primary">
             <v-icon
               left
-              color="black">mdi-file-star-outline</v-icon>
+              color="text">mdi-file-star-outline</v-icon>
             <template v-if="file.suggestions.length > 1">Fiches associées</template>
             <template v-else>Fiche associée</template>
           </p>
@@ -238,7 +239,7 @@
           v-if="subjectFiles.length"
           cols="12">
           <p class="display-1 text--primary">
-            <v-icon color="black">mdi-file-multiple-outline</v-icon>
+            <v-icon color="text">mdi-file-multiple-outline</v-icon>
             Davantage de fiches ({{ subject.name }})
           </p>
           <files-slider
@@ -283,14 +284,16 @@ export default {
   },
   mounted() {
     if (this.defaultFormat === 'pdf') {
-      this.src = pdf.createLoadingTask(this.url + 'pdf')
+      let url = this.url
+      if (this.$vuetify.theme.dark && this.file.dark !== undefined) url += '--dark'
+      this.src = pdf.createLoadingTask(url + '.pdf')
 
       this.src.promise.then(pdf => {
         this.numPages = pdf.numPages
         this.loaded = true
       })
     } else if (this.defaultFormat === 'json') {
-      fetch(this.url + 'json')
+      fetch(this.url + '.json')
         .then(response => {
           return response.json()
         })
@@ -323,7 +326,7 @@ export default {
       return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
     },
     url() {
-      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
+      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}`
     },
     defaultFormat() {
       return this.file.formats[0]
