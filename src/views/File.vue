@@ -4,6 +4,7 @@
       class="contained mb-3"
       elevation="0"
       :style="{ 'border-bottom': '1px solid rgba(0, 0, 0, .12)', background: getHexa(subject.color) + ' !important', color: 'white' }"
+      :app="pinBar"
       dense>
       <template v-if="zoomMenu">
         <v-btn
@@ -64,6 +65,27 @@
           </template>
           <span>Rotation de la page</span>
         </v-tooltip>
+        <v-tooltip
+          bottom
+          open-delay="500">
+          <template #activator="{ on }">
+            <v-btn
+              color="white"
+              icon
+              v-on="on"
+              @click="pinBar = !pinBar">
+              <v-icon>
+                <template v-if="pinBar">mdi-pin-off-outline</template>
+                <template v-else>mdi-pin-outline</template>
+              </v-icon>
+            </v-btn>
+          </template>
+          <span v-if="pinBar">Masquer la barre</span>
+          <span v-else>Garder la barre sur le contenu</span>
+        </v-tooltip>
+        <v-spacer/>
+        <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
+        <v-spacer/>
         <v-dialog
           v-model="infoDialog"
           width="500">
@@ -121,9 +143,6 @@
             </template>
           </card>
         </v-dialog>
-        <v-spacer/>
-        <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
-        <v-spacer/>
         <v-tooltip bottom>
           <template #activator="{ on }">
             <template v-if="isInLibrary">
@@ -278,6 +297,7 @@ export default {
 
       zoomMenu: false,
       infoDialog: false,
+      pinBar: true,
 
       formats
     }
