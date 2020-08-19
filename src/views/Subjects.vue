@@ -45,23 +45,7 @@ export default {
   components: { TopBanner },
   computed: {
     ...mapState(['subjects']),
-    ...mapGetters(['getFilesBySubject']),
-    subjectCategories() {
-      return [
-        {
-          name: 'Tronc commun',
-          subjects: this.subjects.filter(s => s.category === 'common')
-        },
-        {
-          name: 'Langues',
-          subjects: this.subjects.filter(s => s.category === 'langs')
-        },
-        {
-          name: 'Enseignements de spécialité',
-          subjects: this.subjects.filter(s => s.category === 'specialisation')
-        },
-      ]
-    }
+    ...mapGetters(['getFilesBySubject', 'subjectCategories'])
   },
   methods: { getGradient }
 }

@@ -11,17 +11,14 @@
         nav>
         <v-list-item
           :class="miniDrawer && 'px-0'"
+          class="gradient rounded-0"
+          style="margin: -8px -8px 8px; height: 48px"
           to="/">
-          <v-list-item-avatar :style="miniDrawer && 'width: 44px !important; height: 44px !important;'">
-            <img
-              src="/favicon.ico"
-              alt="Logo de 105app">
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title>105app</v-list-item-title>
-            <v-list-item-subtitle>Les révisions pratiques</v-list-item-subtitle>
-          </v-list-item-content>
+          <v-row
+            align="center"
+            justify="center">
+            105<span v-if="!miniDrawer">app</span>
+          </v-row>
         </v-list-item>
         <v-list-item
           v-if="miniDrawer"
@@ -36,10 +33,8 @@
             v-model="search"
             :label="`Rechercher...`"
             clearable
-            rounded
-            filled
+            outlined
             dense
-            solo
             hide-details
             @keydown.enter="gotoSearch"/>
         </v-list-item>
@@ -47,6 +42,8 @@
           v-for="page in pages"
           :key="page.name"
           :to="page.link"
+          style="margin: 0 -8px 4px; padding: 0 16px;"
+          class="rounded-0"
           link>
           <v-tooltip
             right
@@ -64,33 +61,38 @@
             <v-list-item-title>{{ page.name }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
-
-      <v-list
-        dense
-        nav>
-        <v-list-item
-          v-for="subject in subjects"
-          :key="subject.slug"
-          :to="{ name: 'subject', params: { subject: subject.slug } }"
-          :disabled="getFilesBySubject(subject.slug).length === 0">
-          <v-tooltip
-            right
-            :disabled="!miniDrawer">
-            <template #activator="{ on }">
-              <v-list-item-icon
-                class="box-icon"
-                :style="{ background: getFilesBySubject(subject.slug).length === 0 ? '#bababa' : getGradient(subject.color) }"
-                v-on="on">
-                <v-icon medium>{{ subject.icon }}</v-icon>
-              </v-list-item-icon>
-            </template>
-            <span>{{ subject.name }}</span>
-          </v-tooltip>
-          <v-list-item-content>
-            <v-list-item-title>{{ subject.name }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <template v-for="category in subjectCategories">
+          <v-divider :key="category.name + 'divider'"/>
+          <v-subheader
+            v-show="!miniDrawer"
+            :key="category.name + 'subheader'">
+            {{ category.name }}
+          </v-subheader>
+          <v-list-item
+            v-for="subject in category.subjects"
+            :key="subject.slug"
+            :to="{ name: 'subject', params: { subject: subject.slug } }"
+            :disabled="getFilesBySubject(subject.slug).length === 0"
+            class="rounded-0"
+            style="margin: 0 -8px 4px; padding: 0 16px;">
+            <v-tooltip
+              right
+              :disabled="!miniDrawer">
+              <template #activator="{ on }">
+                <v-list-item-icon
+                  class="box-icon"
+                  :style="{ background: getFilesBySubject(subject.slug).length === 0 ? '#bababa' : getGradient(subject.color) }"
+                  v-on="on">
+                  <v-icon medium>{{ subject.icon }}</v-icon>
+                </v-list-item-icon>
+              </template>
+              <span>{{ subject.name }}</span>
+            </v-tooltip>
+            <v-list-item-content>
+              <v-list-item-title>{{ subject.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
       </v-list>
 
       <template #append>
@@ -189,7 +191,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getFilesBySubject']),
+    ...mapGetters(['getFilesBySubject', 'subjectCategories']),
     mobilePages() {
       return [
         { name: 'Accueil', icon: 'mdi-home', link: '/' },
