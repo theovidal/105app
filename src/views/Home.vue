@@ -52,6 +52,12 @@
             </v-col>
             <v-col cols="12">
               <card>
+                <template #title>Quelques liens utiles...</template>
+                <links-list/>
+              </card>
+            </v-col>
+            <v-col cols="12">
+              <card>
                 <template #title>Proposez vos fiches</template>
                 <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
                 <v-btn
@@ -141,6 +147,7 @@
 import { mapGetters } from 'vuex'
 
 import FileCard from '@/views/parts/FileCard'
+import LinksList from '@/views/parts/LinksList'
 import NewsCard from '@/views/parts/NewsCard'
 
 import subjects from '@/data/subjects'
@@ -150,7 +157,7 @@ import { getGradient } from '@/utils/color'
 
 export default {
   name: 'Home',
-  components: { NewsCard, FileCard },
+  components: { FileCard, LinksList, NewsCard },
   data () {
     return {
       tips: [
