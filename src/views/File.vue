@@ -4,6 +4,7 @@
       class="contained mb-3"
       elevation="0"
       :style="{ 'border-bottom': '1px solid rgba(0, 0, 0, .12)', background: getHexa(subject.color) + ' !important', color: 'white' }"
+      :app="pinBar"
       dense>
       <template v-if="zoomMenu">
         <v-btn
@@ -50,6 +51,7 @@
           <span>Niveau de zoom</span>
         </v-tooltip>
         <v-tooltip
+          v-if="defaultFormat === 'pdf'"
           bottom
           open-delay="500">
           <template #activator="{ on }">
@@ -63,6 +65,27 @@
           </template>
           <span>Rotation de la page</span>
         </v-tooltip>
+        <v-tooltip
+          bottom
+          open-delay="500">
+          <template #activator="{ on }">
+            <v-btn
+              color="white"
+              icon
+              v-on="on"
+              @click="pinBar = !pinBar">
+              <v-icon>
+                <template v-if="pinBar">mdi-pin-off-outline</template>
+                <template v-else>mdi-pin-outline</template>
+              </v-icon>
+            </v-btn>
+          </template>
+          <span v-if="pinBar">Masquer la barre</span>
+          <span v-else>Garder la barre sur le contenu</span>
+        </v-tooltip>
+        <v-spacer/>
+        <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
+        <v-spacer/>
         <v-dialog
           v-model="infoDialog"
           width="500">
@@ -120,9 +143,6 @@
             </template>
           </card>
         </v-dialog>
-        <v-spacer/>
-        <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">{{ file.name }}</v-toolbar-title>
-        <v-spacer/>
         <v-tooltip bottom>
           <template #activator="{ on }">
             <template v-if="isInLibrary">
@@ -205,19 +225,40 @@
             <v-text-field
               v-model="tableSearch"
               prepend-inner-icon="mdi-magnify"
-              label="Rechercher dans le tableau"
+              label="Rechercher..."
               hide-details
               single-line
               outlined/>
             <v-data-table
               :headers="data.headers"
               :items="data.items"
-              :search="tableSearch"/>
+              :search="tableSearch"
+              :group-by="data.categorised === undefined ? [] : 'category'">
+              <template #group.header="{ group }">
+                <td
+                  style="border-left: 5px solid var(--v-primary-base)"
+                  colspan="2">
+                  {{ group }}
+                </td>
+              </template>
+              <template #item="{ item }">
+                <tr>
+                  <template v-for="row in Object.keys(item)">
+                    <td
+                      v-if="row !== 'category'"
+                      :key="row"
+                      class="text-start"
+                      v-html="item[row]"/>
+                  </template>
+                </tr>
+              </template>
+              <template #top>hey</template>
+            </v-data-table>
           </v-card-text>
         </v-card>
       </template>
     </v-row>
-    <v-container>
+    <v-container class="contained">
       <v-row>
         <v-col
           v-if="suggestedFiles.length"
@@ -225,7 +266,7 @@
           <p class="display-1 text--primary">
             <v-icon
               left
-              color="black">mdi-file-star-outline</v-icon>
+              color="text">mdi-file-star-outline</v-icon>
             <template v-if="file.suggestions.length > 1">Fiches associées</template>
             <template v-else>Fiche associée</template>
           </p>
@@ -238,7 +279,7 @@
           v-if="subjectFiles.length"
           cols="12">
           <p class="display-1 text--primary">
-            <v-icon color="black">mdi-file-multiple-outline</v-icon>
+            <v-icon color="text">mdi-file-multiple-outline</v-icon>
             Davantage de fiches ({{ subject.name }})
           </p>
           <files-slider
@@ -277,20 +318,23 @@ export default {
 
       zoomMenu: false,
       infoDialog: false,
+      pinBar: true,
 
       formats
     }
   },
   mounted() {
     if (this.defaultFormat === 'pdf') {
-      this.src = pdf.createLoadingTask(this.url + 'pdf')
+      let url = this.url
+      if (this.$vuetify.theme.dark && this.file.dark !== undefined) url += '--dark'
+      this.src = pdf.createLoadingTask(url + '.pdf')
 
       this.src.promise.then(pdf => {
         this.numPages = pdf.numPages
         this.loaded = true
       })
     } else if (this.defaultFormat === 'json') {
-      fetch(this.url + 'json')
+      fetch(this.url + '.json')
         .then(response => {
           return response.json()
         })
@@ -323,7 +367,7 @@ export default {
       return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
     },
     url() {
-      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}.`
+      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}`
     },
     defaultFormat() {
       return this.file.formats[0]

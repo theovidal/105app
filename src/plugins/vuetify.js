@@ -23,15 +23,20 @@ export default new Vuetify({
     themes: {
       light: {
         ...theme,
+        text: '#000',
         background: '#f2f2f7',
-        sheets: '#fff'
+        sheets: '#fff',
+        disabled: '#bababa'
       },
       dark: {
         ...theme,
+        text: '#fff',
         background: '#000',
-        sheets: '#1c1c1d'
+        sheets: '#1c1c1d',
+        disabled: '#444444'
       }
     },
+    dark: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
     options: {
       customProperties: true,
     }

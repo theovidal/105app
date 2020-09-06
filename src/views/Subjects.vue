@@ -14,7 +14,7 @@
             v-for="subject in category.subjects"
             :key="subject.slug"
             :disabled="getFilesBySubject(subject.slug).length === 0"
-            :style="{ background: getFilesBySubject(subject.slug).length === 0 ? '#bababa' : getGradient(subject.color) }"
+            :style="{ background: getFilesBySubject(subject.slug).length === 0 ? 'var(--v-disabled-base)' : getGradient(subject.color) }"
             :to="{ name: 'subject', params: { subject: subject.slug }}">
             <v-list-item-avatar>
               <v-icon>{{ subject.icon }}</v-icon>
@@ -45,23 +45,7 @@ export default {
   components: { TopBanner },
   computed: {
     ...mapState(['subjects']),
-    ...mapGetters(['getFilesBySubject']),
-    subjectCategories() {
-      return [
-        {
-          name: 'Tronc commun',
-          subjects: this.subjects.filter(s => s.category === 'common')
-        },
-        {
-          name: 'Langues',
-          subjects: this.subjects.filter(s => s.category === 'langs')
-        },
-        {
-          name: 'Enseignements de spécialité',
-          subjects: this.subjects.filter(s => s.category === 'specialisation')
-        },
-      ]
-    }
+    ...mapGetters(['getFilesBySubject', 'subjectCategories'])
   },
   methods: { getGradient }
 }

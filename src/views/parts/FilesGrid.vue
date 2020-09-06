@@ -1,5 +1,6 @@
 <template>
   <v-row>
+    <slot name="prepend"/>
     <v-col
       v-for="file in files"
       :key="file.slug"

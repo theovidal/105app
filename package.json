@@ -1,6 +1,6 @@
 {
   "name": "105app",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "Revise in the best way. A school app with files to work lessons",
   "homepage": "https://github.com/exybore/105app",
   "keywords": [
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
-    "@mdi/font": "^5.3.45",
+    "@mdi/font": "^5.5.55",
     "core-js": "^3.6.5",
     "moment": "^2.27.0",
     "raw-loader": "^4.0.1",
@@ -45,21 +45,21 @@
     "vue-markdown": "^2.2.4",
     "vue-meta": "^2.4.0",
     "vue-pdf": "^4.1.0",
-    "vue-router": "^3.3.4",
-    "vuetify": "^2.3.3",
+    "vue-router": "^3.4.3",
+    "vuetify": "^2.3.8",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.4.6",
-    "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-plugin-pwa": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@vue/cli-plugin-babel": "^4.5.4",
+    "@vue/cli-plugin-eslint": "^4.5.4",
+    "@vue/cli-plugin-pwa": "^4.5.4",
+    "@vue/cli-service": "^4.5.4",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.7.0",
     "eslint-plugin-vue": "^6.2.2",
-    "stylus": "^0.54.7",
+    "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "vue-cli-plugin-vuetify": "^2.0.6",
+    "vue-cli-plugin-vuetify": "^2.0.7",
     "vue-template-compiler": "^2.6.11"
   }
 }
