@@ -225,14 +225,35 @@
             <v-text-field
               v-model="tableSearch"
               prepend-inner-icon="mdi-magnify"
-              label="Rechercher dans le tableau"
+              label="Rechercher..."
               hide-details
               single-line
               outlined/>
             <v-data-table
               :headers="data.headers"
               :items="data.items"
-              :search="tableSearch"/>
+              :search="tableSearch"
+              :group-by="data.categorised === undefined ? [] : 'category'">
+              <template #group.header="{ group }">
+                <td
+                  style="border-left: 5px solid var(--v-primary-base)"
+                  colspan="2">
+                  {{ group }}
+                </td>
+              </template>
+              <template #item="{ item }">
+                <tr>
+                  <template v-for="row in Object.keys(item)">
+                    <td
+                      v-if="row !== 'category'"
+                      :key="row"
+                      class="text-start"
+                      v-html="item[row]"/>
+                  </template>
+                </tr>
+              </template>
+              <template #top>hey</template>
+            </v-data-table>
           </v-card-text>
         </v-card>
       </template>

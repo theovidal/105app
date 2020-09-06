@@ -31,7 +31,7 @@
         <v-list-item v-else>
           <v-text-field
             v-model="search"
-            :label="`Rechercher...`"
+            label="Rechercher..."
             clearable
             outlined
             dense
