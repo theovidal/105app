@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getGradient } from '@/utils/color'
+import getGradient from '@/utils/color'
 
 export default {
   props: {
@@ -35,8 +35,6 @@ export default {
       }
     }
   },
-  methods: {
-    getGradient
-  }
+  methods: { getGradient }
 }
 </script>

@@ -10,3 +10,4 @@ export {
   today,
   dateToText
 }
+export default dateToText

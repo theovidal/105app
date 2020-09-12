@@ -37,8 +37,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import { getGradient } from '../utils/color'
-import TopBanner from './parts/TopBanner'
+import getGradient from '@/utils/color'
+import TopBanner from '@/views/parts/TopBanner'
 
 export default {
   name: 'Subject',

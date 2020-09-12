@@ -1,5 +1,5 @@
 import { loadFiles } from '@/utils/storage'
-import { fileSort } from '@/utils/sorting'
+import fileSort from '@/utils/sorting'
 
 const state = loadFiles()
 
@@ -29,16 +29,17 @@ const getters = {
   },
   getLastFiles: (state, getters) => {
     let files = getters.getAllFiles.sort(fileSort)
-    return files.slice(0, 5)
+    return files.slice(0, 7)
   },
-  searchFiles: (state, getters) => (query, subjects) => {
+  getFilesByQuery: (state, getters) => (query, subjects) => {
     query = query.toLowerCase()
     return getters.getAllFiles.filter(file => {
       let name = file.name.toLowerCase()
       let description = file.description.toLowerCase()
 
       let matched = name.match(query) !== null || description.match(query) !== null
-      return matched && subjects.includes(file.subject)
+      if (subjects.length) return matched && subjects.includes(file.subject)
+      else return matched
     })
   }
 }

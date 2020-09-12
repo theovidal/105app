@@ -35,22 +35,29 @@
               md="6">
               <v-select
                 v-if="loaded"
-                v-model="chosenSubjects"
-                :items="Object.keys(availableSubjects)"
+                v-model="selection"
+                :items="defaultSubjects"
+                item-value="slug"
                 label="Matières"
-                attach
-                chips
+                deletable-chips
+                clearable
                 multiple
-                outlined>
-                <template #selection="{ item, index }">
-                  <v-chip v-if="index === 0">
-                    <span>{{ item }}</span>
+                outlined
+                attach
+                chips>
+                <template #item="{ item: subject }">
+                  <v-icon
+                    class="box-icon"
+                    :style="{ background: getGradient(subject.color), color: 'white !important' }"
+                    left>{{ subject.icon }}</v-icon>
+                  {{ subject.name }}
+                </template>
+                <template #selection="{ item: subject }">
+                  <v-chip
+                    :color="getHexa(subject.color)"
+                    small>
+                    <span>{{ subject.name }}</span>
                   </v-chip>
-                  <span
-                    v-if="index === 1"
-                    class="grey--text caption">
-                    (+{{ chosenSubjects.length - 1 }} autres)
-                  </span>
                 </template>
               </v-select>
             </v-col>
@@ -87,7 +94,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import FileCard from './parts/FileCard'
+import FileCard from '@/views/parts/FileCard'
+import { getGradient, getHexa } from '@/utils/color'
 
 export default {
   name: 'Search',
@@ -95,51 +103,37 @@ export default {
   data() {
     return {
       query: '',
-      availableSubjects: {},
-      chosenSubjects: [],
+      selection: [],
+
       loaded: false
     }
   },
   mounted() {
-    if (this.$route.query.q !== undefined) {
-      this.query = this.$route.query.q
-    }
-    if (this.$route.query.s !== undefined && this.$route.query.s !== 'all') {
-      let querySubjects = this.$route.query.s.split(',')
-      querySubjects.forEach((subject) => {
-        this.chosenSubjects.push(this.getSubjectBySlug(subject).name)
-      })
-    }
-    this.defaultSubjects.forEach((subject) => {
-      this.availableSubjects[subject.name] = subject.slug
-    })
+    if (this.$route.query.q !== undefined) this.query = this.$route.query.q
+
+    let querySubjects = this.$route.query.s
+    if (querySubjects !== undefined && querySubjects !== 'all')
+      querySubjects.split(',').forEach((subject) => this.selection.push(subject))
+
     this.loaded = true
   },
   computed: {
     ...mapState({
       defaultSubjects: 'subjects'
     }),
-    ...mapGetters(['searchFiles', 'getSubjectBySlug']),
+    ...mapGetters(['getFilesByQuery', 'getSubjectBySlug']),
     files() {
-      return this.searchFiles(this.query, this.subjects)
-    },
-    subjects() {
-      let subjects = []
-      if (this.chosenSubjects.length) {
-        this.chosenSubjects.forEach((value) => {
-          subjects.push(this.availableSubjects[value])
-        })
-      } else subjects = Object.values(this.availableSubjects)
-      return subjects
+      return this.getFilesByQuery(this.query, this.selection)
     },
     url() {
       let query = this.query
-      let subjects = this.chosenSubjects.length === 0 ? 'all' : this.subjects.join(',')
+      let subjects = this.selection.length ? this.selection.join(',') : 'all'
       return `?q=${query}&s=${subjects}`
     }
   },
+  methods: { getGradient, getHexa },
   metaInfo() {
-    let title = this.query === '' ? 'Recherche' : `Résultat de recherche : ${this.query}`
+    let title = this.query.length ? `Résultat de recherche : ${this.query}` : 'Recherche'
     return {
       title: `${title} | 105`
     }

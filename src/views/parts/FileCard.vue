@@ -25,8 +25,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { getRgba, getHexa } from '@/utils/color'
-import { dateToText } from '@/utils/parsing'
+import { getHexa } from '@/utils/color'
+import dateToText from '@/utils/parsing'
 
 export default {
   name: 'FileCard',
@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     dateToText,
-    getRgba,
     getHexa
   }
 }

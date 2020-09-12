@@ -12,7 +12,7 @@ const getters = {
       subjects: state.filter(s => s.category === 'common')
     },
     {
-      name: 'Langues',
+      name: 'Langues vivantes',
       subjects: state.filter(s => s.category === 'langs')
     },
     {

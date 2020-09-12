@@ -9,7 +9,7 @@
             <v-col cols="12">
               <card gradient>
                 <template #title>
-                  <span class="black--text">105app &mdash; Bienvenue</span>
+                  <span class="black--text">105 &mdash; Bienvenue!</span>
                 </template>
                 <v-img
                   width="50%"
@@ -53,13 +53,15 @@
             <v-col cols="12">
               <card>
                 <template #title>Quelques liens utiles...</template>
-                <links-list/>
+                <links-list
+                  :links="links"
+                  no-heading/>
               </card>
             </v-col>
             <v-col cols="12">
               <card>
                 <template #title>Proposez vos fiches</template>
-                <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105app !</p>
+                <p> Vous avez créé des fiches que vous considérez enrichissantes et travaillées ? Faites une proposition pour l'ajouter à 105 !</p>
                 <v-btn
                   rel="noreferrer"
                   href="https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677"
@@ -124,7 +126,7 @@
         <v-col cols="12">
           <p class="display-1 text--primary">
             <v-icon color="text">mdi-post-outline</v-icon>
-            Actualités de 105app
+            Actus' de 105
             <v-row>
               <v-col
                 v-for="post in news"
@@ -152,41 +154,16 @@ import NewsCard from '@/views/parts/NewsCard'
 
 import subjects from '@/data/subjects'
 import news from '@/data/news'
-import { getGradient } from '@/utils/color'
+import links from '@/data/links'
+import tips from '@/data/tips'
+import getGradient from '@/utils/color'
 
 
 export default {
   name: 'Home',
   components: { FileCard, LinksList, NewsCard },
   data () {
-    return {
-      tips: [
-        {
-          title: 'Prenez connaissance des dernières publications',
-          content: "Des fiches sont régulièrement ajoutées sur 105app, et les plus récentes sont affichées sur cette page d'accueil." +
-            "Regardez à droite sur PC ou descendez plus bas sur mobile."
-        },
-        {
-          title: 'Consultez toutes les fiches',
-          content: "L'intégralité des fiches disponibles sur 105app sont répertoriées dans la page des matières, et sont organisées pour une navigation agréable.",
-          link: '/subjects',
-          mobileOnly: true,
-        },
-        {
-          title: 'Recherchez des fiches spécifiques',
-          content: "Vous savez déjà quelle fiche vous souhaitez consulter ? Effectuez une recherche avec les mots clé correspondant et vous la retrouverez !",
-          link: '/search'
-        },
-        {
-          title: 'Ajoutez des fiches à votre bibliothèque',
-          content: "La bibliothèque est personnelle, et vous permet d'y lister les fiches de votre choix. Pour en ajouter une, cliquez sur l'icône de sauvegarde en haut à droite de ladite fiche.",
-          link: '/library'
-        }
-      ],
-
-      subjects,
-      news
-    }
+    return { subjects, news, links, tips }
   },
   computed: mapGetters(['getLastFiles', 'getSubjectBySlug']),
   methods: { getGradient }
