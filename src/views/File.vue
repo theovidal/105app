@@ -22,9 +22,7 @@
           max="100"/>
       </template>
       <template v-else>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               :to="{ name: 'subject', params: { subject: file.subject } }"
@@ -36,9 +34,7 @@
           </template>
           <span>Retour à la liste des fiches</span>
         </v-tooltip>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               color="white"
@@ -52,8 +48,7 @@
         </v-tooltip>
         <v-tooltip
           v-if="defaultFormat === 'pdf'"
-          bottom
-          open-delay="500">
+          bottom>
           <template #activator="{ on }">
             <v-btn
               color="white"
@@ -65,9 +60,7 @@
           </template>
           <span>Rotation de la page</span>
         </v-tooltip>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               color="white"
@@ -90,9 +83,7 @@
           v-model="infoDialog"
           width="500">
           <template v-slot:activator="{ on: dialog }">
-            <v-tooltip
-              bottom
-              open-delay="500">
+            <v-tooltip bottom>
               <template #activator="{ on: tooltip }">
                 <v-btn
                   color="white"
@@ -145,25 +136,13 @@
         </v-dialog>
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <template v-if="isInLibrary">
-              <v-btn
-                color="white"
-                icon
-                v-on="on"
-                @click="removeFileFromLibrary(libraryData)">
-                <v-icon>
-                  mdi-text-box-minus-outline</v-icon>
-              </v-btn>
-            </template>
-            <template v-else>
-              <v-btn
-                color="white"
-                icon
-                v-on="on"
-                @click="addFileToLibrary(libraryData)">
-                <v-icon>mdi-text-box-plus-outline</v-icon>
-              </v-btn>
-            </template>
+            <v-btn
+              color="white"
+              icon
+              v-on="on"
+              @click="isInLibrary ? removeFileFromLibrary(libraryData) : addFileToLibrary(libraryData)">
+              <v-icon>{{ isInLibrary ? 'mdi-text-box-minus-outline' : 'mdi-text-box-plus-outline' }}</v-icon>
+            </v-btn>
           </template>
           <span>
             <template v-if="isInLibrary">Supprimer de la bibliothèque</template>
@@ -252,7 +231,6 @@
                   </template>
                 </tr>
               </template>
-              <template #top>hey</template>
             </v-data-table>
           </v-card-text>
         </v-card>
@@ -260,6 +238,20 @@
     </v-row>
     <v-container class="contained">
       <v-row>
+        <v-col
+          v-if="file.links !== undefined"
+          cols="12">
+          <p class="display-1 text--primary">
+            <v-icon
+              left
+              color="text">mdi-link-variant-plus</v-icon>
+            Liens pour approfondir
+          </p>
+          <links-list
+            :links="file.links"
+            no-heading
+            background/>
+        </v-col>
         <v-col
           v-if="suggestedFiles.length"
           cols="12">
@@ -296,14 +288,15 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 import pdf from 'vue-pdf'
 import FilesSlider from '@/views/parts/FilesSlider'
+import LinksList from '@/views/parts/LinksList'
 
 import formats from '@/data/formats'
-import { dateToText } from '@/utils/parsing'
+import dateToText from '@/utils/parsing'
 import { getHexa } from '@/utils/color'
 
 export default {
   name: 'File',
-  components: { pdf, FilesSlider },
+  components: { LinksList, pdf, FilesSlider },
   data () {
     return {
       zoom: 90,

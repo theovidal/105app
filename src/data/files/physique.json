@@ -7,6 +7,20 @@
     "suggestions": [
       "si/comment-evaluer-lefficacite-energetique-dun-systeme"
     ],
+    "links": [
+      {
+        "type": "video",
+        "name": "Théorème de l'énergie cinétique",
+        "description": "Vidéo de cours (Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C14_VID_Theoreme-de-l-energie-cinetiquemp4"
+      },
+      {
+        "type": "video",
+        "name": "Variation d'énergie mécanique",
+        "description": "Vidéo de cours (Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C14_VID_Variation_energie_mecamp4"
+      }
+    ],
     "formats": [
       "pdf",
       "docx"
@@ -19,6 +33,14 @@
     "slug": "les-ondes-mecaniques",
     "description": "Le phénomène d'onde mécanique progressive, sa mesure et sa double périodicité",
     "author": "Théo Vidal",
+    "links": [
+      {
+        "type": "video",
+        "name": "Double périodicité",
+        "description": "Vidéo de cours (manuel Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C15_VID_double-periodicitemp4"
+      }
+    ],
     "formats": [
       "pdf",
       "docx"
