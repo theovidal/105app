@@ -1,1 +1,1 @@
-Reposez-vous, partez découvrir de nouveaux lieux, et revenez sur __105app__ juste avant la rentrée pour repartir sur le bon pied!
+Reposez-vous, partez découvrir de nouveaux lieux, et revenez sur __105__ juste avant la rentrée pour repartir sur le bon pied!

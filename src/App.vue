@@ -17,7 +17,7 @@
           <v-row
             align="center"
             justify="center">
-            105<span v-if="!miniDrawer">app</span>
+            105
           </v-row>
         </v-list-item>
         <v-list-item
@@ -36,7 +36,10 @@
             outlined
             dense
             hide-details
-            @keydown.enter="gotoSearch"/>
+            @keydown.enter="$router.push({
+              name: 'search',
+              query: { q: search }
+            })"/>
         </v-list-item>
         <v-list-item
           v-for="page in pages"
@@ -81,7 +84,7 @@
               <template #activator="{ on }">
                 <v-list-item-icon
                   class="box-icon"
-                  :style="{ background: getFilesBySubject(subject.slug).length === 0 ? '#bababa' : getGradient(subject.color) }"
+                  :style="{ background: getFilesBySubject(subject.slug).length ? getGradient(subject.color) : '#bababa' }"
                   v-on="on">
                   <v-icon medium>{{ subject.icon }}</v-icon>
                 </v-list-item-icon>
@@ -164,7 +167,7 @@
 
 <script>
 import subjects from '@/data/subjects'
-import { getGradient } from '@/utils/color'
+import getGradient from '@/utils/color'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -181,15 +184,7 @@ export default {
       subjects
     }
   },
-  methods: {
-    getGradient,
-    gotoSearch () {
-      this.$router.push({
-        name: 'search',
-        query: { q: this.search }
-      })
-    }
-  },
+  methods: { getGradient },
   computed: {
     ...mapGetters(['getFilesBySubject', 'subjectCategories']),
     mobilePages() {
