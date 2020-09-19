@@ -46,20 +46,6 @@
           </template>
           <span>Niveau de zoom</span>
         </v-tooltip>
-        <v-tooltip
-          v-if="defaultFormat === 'pdf'"
-          bottom>
-          <template #activator="{ on }">
-            <v-btn
-              color="white"
-              icon
-              v-on="on"
-              @click="rotate += 90">
-              <v-icon>mdi-rotate-right</v-icon>
-            </v-btn>
-          </template>
-          <span>Rotation de la page</span>
-        </v-tooltip>
         <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
@@ -169,72 +155,28 @@
           </template>
           <v-list>
             <v-list-item
-              v-for="format in file.formats"
-              :key="format"
-              :href="url + format"
+              v-for="part in file.parts.filter(p => p.downloadable !== undefined)"
+              :key="part.slug"
+              :href="`${url}/${part.slug}.${part.format}`"
               target="_blank">
               <v-list-item-icon>
-                <v-icon>{{ formats[format].icon }}</v-icon>
+                <v-icon>{{ formats[part.format].icon }}</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>{{ formats[format].name }} (.{{ format }})</v-list-item-title>
+              <v-list-item-title>{{ part.name }} (.{{ part.format }})</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </template>
     </v-app-bar>
-    <v-container v-if="!loaded">
-      <v-progress-linear
-        indeterminate
-        :color="getHexa(subject.color)"/>
-    </v-container>
     <v-row justify="center">
-      <template v-if="defaultFormat === 'pdf'">
-        <pdf
-          v-for="i in numPages"
-          :key="`${file.subject}/${file.slug}--${i}`"
-          :src="src"
-          :page="i"
-          :rotate="rotate"
-          :style="style"/>
-      </template>
-      <template v-else-if="defaultFormat === 'json'">
-        <v-card :width="zoom + '%'">
-          <v-card-title>{{ file.name }}</v-card-title>
-          <v-card-text>
-            <v-text-field
-              v-model="tableSearch"
-              prepend-inner-icon="mdi-magnify"
-              label="Rechercher..."
-              hide-details
-              single-line
-              outlined/>
-            <v-data-table
-              :headers="data.headers"
-              :items="data.items"
-              :search="tableSearch"
-              :group-by="data.categorised === undefined ? [] : 'category'">
-              <template #group.header="{ group }">
-                <td
-                  style="border-left: 5px solid var(--v-primary-base)"
-                  colspan="2">
-                  {{ group }}
-                </td>
-              </template>
-              <template #item="{ item }">
-                <tr>
-                  <template v-for="row in Object.keys(item)">
-                    <td
-                      v-if="row !== 'category'"
-                      :key="row"
-                      class="text-start"
-                      v-html="item[row]"/>
-                  </template>
-                </tr>
-              </template>
-            </v-data-table>
-          </v-card-text>
-        </v-card>
-      </template>
+      <component
+        :is="types[part.format]"
+        v-for="(part, i) in file.parts.filter(p => p.hide === undefined)"
+        :key="i"
+        :file="file"
+        :subject="subject"
+        :part="part"
+        :zoom="zoom"/>
     </v-row>
     <v-container class="contained">
       <v-row>
@@ -286,55 +228,33 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
-import pdf from 'vue-pdf'
 import FilesSlider from '@/views/parts/FilesSlider'
 import LinksList from '@/views/parts/LinksList'
+import PDF from '@/views/types/PDF'
+import Table from '@/views/types/Table'
 
 import formats from '@/data/formats'
+import settings from '@/data/settings'
 import dateToText from '@/utils/parsing'
 import { getHexa } from '@/utils/color'
 
 export default {
   name: 'File',
-  components: { LinksList, pdf, FilesSlider },
+  components: { LinksList, FilesSlider },
   data () {
     return {
       zoom: 90,
-
-      data: [],
-      tableSearch: '',
-
-      src: '',
-      rotate: 0,
-      numPages: undefined,
-      loaded: false,
 
       zoomMenu: false,
       infoDialog: false,
       pinBar: true,
 
-      formats
-    }
-  },
-  mounted() {
-    if (this.defaultFormat === 'pdf') {
-      let url = this.url
-      if (this.$vuetify.theme.dark && this.file.dark !== undefined) url += '--dark'
-      this.src = pdf.createLoadingTask(url + '.pdf')
-
-      this.src.promise.then(pdf => {
-        this.numPages = pdf.numPages
-        this.loaded = true
-      })
-    } else if (this.defaultFormat === 'json') {
-      fetch(this.url + '.json')
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.data = data
-        })
-      this.loaded = true
+      types: {
+        'pdf': PDF,
+        'json': Table
+      },
+      formats,
+      settings
     }
   },
   computed: {
@@ -360,10 +280,7 @@ export default {
       return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
     },
     url() {
-      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}`
-    },
-    defaultFormat() {
-      return this.file.formats[0]
+      return `${settings.assetsRoot}/${this.subject.slug}/${this.file.slug}`
     },
 
     isInLibrary() {
@@ -374,10 +291,6 @@ export default {
         subject: this.subject.slug,
         file: this.file.slug
       }
-    },
-
-    style() {
-      return `width: ${this.zoom}vw`
     }
   },
   methods: {
