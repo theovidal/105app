@@ -4,9 +4,18 @@
     "slug": "conversions-binaire-decimal-hexadecimal",
     "description": "Méthodes de conversion d'entiers entre ces trois bases numériques",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "conversions-binaire-decimal-hexadecimal",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "conversions-binaire-decimal-hexadecimal",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-03-30"
@@ -16,9 +25,18 @@
     "slug": "comment-apporter-la-meilleure-reponse-a-un-besoin",
     "description": "L'analyse du besoin et des outils pour représenter un système",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "comment-apporter-la-meilleure-reponse-a-un-besoin",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "comment-apporter-la-meilleure-reponse-a-un-besoin",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "dark": true,
     "level": "1ère",
@@ -32,9 +50,18 @@
     "suggestions": [
       "physique/aspect-energetique-des-phenomenes-mecaniques"
     ],
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "comment-evaluer-lefficacite-energetique-dun-systeme",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "comment-evaluer-lefficacite-energetique-dun-systeme",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2019-11-07"

@@ -21,9 +21,18 @@
         "value": "https://lycee.hachette-education.com/pc/1re/#C14_VID_Variation_energie_mecamp4"
       }
     ],
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "aspect-energetique-des-phenomenes-mecaniques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "aspect-energetique-des-phenomenes-mecaniques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-06-03"
@@ -41,9 +50,18 @@
         "value": "https://lycee.hachette-education.com/pc/1re/#C15_VID_double-periodicitemp4"
       }
     ],
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "les-ondes-mecaniques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "les-ondes-mecaniques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-06-09"

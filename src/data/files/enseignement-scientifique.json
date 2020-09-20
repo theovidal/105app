@@ -4,9 +4,18 @@
     "slug": "la-forme-de-la-terre",
     "description": "Particularités sur la forme sphérique de la Terre (rayon, circonférence, repérage)",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "la-forme-de-la-terre",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "la-forme-de-la-terre",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-03-28"
@@ -16,9 +25,18 @@
     "slug": "les-cristaux-des-edifices-ordonnes",
     "description": "Les solides cristallins et amorphes, et leur construction macroscopique",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "les-cristaux-des-edifices-ordonnes",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "les-cristaux-des-edifices-ordonnes",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-04-07"

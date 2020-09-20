@@ -4,9 +4,18 @@
     "slug": "suites-arithmetiques-geometriques",
     "description": "Étude de cas particuliers de suites : arithmétiques et géométriques.",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "suites-arithmetiques-geometriques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "suites-arithmetiques-geometriques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "dark": true,
     "level": "1ère",
@@ -17,9 +26,18 @@
     "slug": "derivation",
     "description": "Taux d'accroissement, nombre dérivé, tangente et fonction dérivée",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "derivation",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "derivation",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère/Terminale",
     "added": "2020-07-01"
