@@ -1,13 +1,14 @@
 import { loadFromStorage, saveToStorage } from '@/utils/storage'
+import { getFileBySlug } from '@/data/files'
 
 const state = loadFromStorage('library')
 
 const getters = {
-  getLibraryFiles: (state, rootGetters) => {
+  getLibraryFiles: state => {
     let output = []
     state.forEach(file => {
       file = file.split('/')
-      output.push(rootGetters.getFileBySlug(file[0], file[1]))
+      output.push(getFileBySlug(file[0], file[1]))
     })
     return output
   }
