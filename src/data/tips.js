@@ -6,7 +6,7 @@ export default [
   },
   {
     title: 'Consultez toutes les fiches',
-    content: "L'intégralité des fiches disponibles sur 105 sont répertoriées, et sont organisées pour une navigation agréable.",
+    content: "L'intégralité des fiches disponibles sur 105 sont répertoriées et organisées pour une navigation agréable.",
     link: '/subjects',
     mobileOnly: true,
   },
