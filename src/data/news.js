@@ -1,5 +1,11 @@
 export default [
   {
+    title: "C'est la rentrée !",
+    date: '2020-09-20',
+    slug: 'c-est-la-rentree',
+    illustration: 'svg'
+  },
+  {
     title: "Les vacances d'été sont arrivées !",
     date: '2020-07-02',
     slug: 'summer-holidays',

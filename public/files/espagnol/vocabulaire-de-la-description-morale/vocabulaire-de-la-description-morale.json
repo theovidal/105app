@@ -1,224 +1,224 @@
 {
   "headers": [
     { "text": "Mot", "value": "word" },
-    { "text": "Traduction", "value": "traduction" },
-    { "text": "Valeur", "value": "value" }
+    { "text": "Traduction", "value": "traduction" }
   ],
+  "categorised": true,
   "items": [
     {
       "word": "simpático",
       "traduction": "sympathique",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "impaciente",
       "traduction": "impatient",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "tímido.a",
       "traduction": "timide",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "paranoico",
       "traduction": "paranoïaque",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "enérgico.a",
       "traduction": "énergique",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "inteligente",
       "traduction": "intelligent.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "negativo.a",
       "traduction": "négatif.ve",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "creativo.a",
       "traduction": "créatif.ve",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "amable",
       "traduction": "aimable - gentil",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "divertido.a",
       "traduction": "amusant.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "vago.a - perezoso.a",
       "traduction": "fainéant.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "tonto.a",
       "traduction": "débile",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "desconfiado.a",
       "traduction": "méfiant.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "celoso.a",
       "traduction": "jaloux.ouse",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "discreto.a",
       "traduction": "discret.ète",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "caprichoso.a",
       "traduction": "capricieux.euse",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "generoso.a",
       "traduction": "généreux.euse",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "trabajador.a",
       "traduction": "travailleur.euse",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "optimista",
       "traduction": "optimiste",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "pesimista",
       "traduction": "pessimiste",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "entusiasta",
       "traduction": "enthousiaste",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "sonriente",
       "traduction": "souriant.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "fiel",
       "traduction": "fidèle",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "empollón.ona",
       "traduction": "bûcheur.euse (fam. : intello)",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "rebelde",
       "traduction": "rebelle",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "revoltoso.a",
       "traduction": "turbulent.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "tacaño.a",
       "traduction": "avare (fam. : radin)",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "terco.a",
       "traduction": "têtu.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "maduro.a",
       "traduction": "mûr.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "infantil",
       "traduction": "infantile - puéril",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "cariñoso.a",
       "traduction": "tendre",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "agresivo.a",
       "traduction": "agressif.ive",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "seguro.a",
       "traduction": "sûr.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "inseguro.a",
       "traduction": "incertain.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "inocente",
       "traduction": "inocent",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "culpable",
       "traduction": "coupable",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "razonable",
       "traduction": "raisonable",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "atontado.a",
       "traduction": "étourdi.e",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "cotilla",
       "traduction": "commère",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     },
     {
       "word": "sincero.a",
       "traduction": "sincère",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "honesto.a",
       "traduction": "honnête",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "educado.a",
       "traduction": "bien élevé.e",
-      "value": "mélioratif"
+      "category": "Mélioratif"
     },
     {
       "word": "maniático.a",
       "traduction": "maniaque",
-      "value": "péjoratif"
+      "category": "Péjoratif"
     }
   ]
 }

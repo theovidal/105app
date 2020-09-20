@@ -22,9 +22,7 @@
           max="100"/>
       </template>
       <template v-else>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               :to="{ name: 'subject', params: { subject: file.subject } }"
@@ -36,9 +34,7 @@
           </template>
           <span>Retour à la liste des fiches</span>
         </v-tooltip>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               color="white"
@@ -50,24 +46,7 @@
           </template>
           <span>Niveau de zoom</span>
         </v-tooltip>
-        <v-tooltip
-          v-if="defaultFormat === 'pdf'"
-          bottom
-          open-delay="500">
-          <template #activator="{ on }">
-            <v-btn
-              color="white"
-              icon
-              v-on="on"
-              @click="rotate += 90">
-              <v-icon>mdi-rotate-right</v-icon>
-            </v-btn>
-          </template>
-          <span>Rotation de la page</span>
-        </v-tooltip>
-        <v-tooltip
-          bottom
-          open-delay="500">
+        <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               color="white"
@@ -90,9 +69,7 @@
           v-model="infoDialog"
           width="500">
           <template v-slot:activator="{ on: dialog }">
-            <v-tooltip
-              bottom
-              open-delay="500">
+            <v-tooltip bottom>
               <template #activator="{ on: tooltip }">
                 <v-btn
                   color="white"
@@ -145,25 +122,13 @@
         </v-dialog>
         <v-tooltip bottom>
           <template #activator="{ on }">
-            <template v-if="isInLibrary">
-              <v-btn
-                color="white"
-                icon
-                v-on="on"
-                @click="removeFileFromLibrary(libraryData)">
-                <v-icon>
-                  mdi-text-box-minus-outline</v-icon>
-              </v-btn>
-            </template>
-            <template v-else>
-              <v-btn
-                color="white"
-                icon
-                v-on="on"
-                @click="addFileToLibrary(libraryData)">
-                <v-icon>mdi-text-box-plus-outline</v-icon>
-              </v-btn>
-            </template>
+            <v-btn
+              color="white"
+              icon
+              v-on="on"
+              @click="isInLibrary ? removeFileFromLibrary(libraryData) : addFileToLibrary(libraryData)">
+              <v-icon>{{ isInLibrary ? 'mdi-text-box-minus-outline' : 'mdi-text-box-plus-outline' }}</v-icon>
+            </v-btn>
           </template>
           <span>
             <template v-if="isInLibrary">Supprimer de la bibliothèque</template>
@@ -190,76 +155,45 @@
           </template>
           <v-list>
             <v-list-item
-              v-for="format in file.formats"
-              :key="format"
-              :href="url + format"
+              v-for="part in file.parts.filter(p => p.locked === undefined)"
+              :key="part.slug + part.format + 'download'"
+              :href="`${url}/${part.slug}.${part.format}`"
               target="_blank">
               <v-list-item-icon>
-                <v-icon>{{ formats[format].icon }}</v-icon>
+                <v-icon>{{ formats[part.format].icon }}</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>{{ formats[format].name }} (.{{ format }})</v-list-item-title>
+              <v-list-item-title>{{ part.name }} (.{{ part.format }})</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </template>
     </v-app-bar>
-    <v-container v-if="!loaded">
-      <v-progress-linear
-        indeterminate
-        :color="getHexa(subject.color)"/>
-    </v-container>
     <v-row justify="center">
-      <template v-if="defaultFormat === 'pdf'">
-        <pdf
-          v-for="i in numPages"
-          :key="`${file.subject}/${file.slug}--${i}`"
-          :src="src"
-          :page="i"
-          :rotate="rotate"
-          :style="style"/>
-      </template>
-      <template v-else-if="defaultFormat === 'json'">
-        <v-card :width="zoom + '%'">
-          <v-card-title>{{ file.name }}</v-card-title>
-          <v-card-text>
-            <v-text-field
-              v-model="tableSearch"
-              prepend-inner-icon="mdi-magnify"
-              label="Rechercher..."
-              hide-details
-              single-line
-              outlined/>
-            <v-data-table
-              :headers="data.headers"
-              :items="data.items"
-              :search="tableSearch"
-              :group-by="data.categorised === undefined ? [] : 'category'">
-              <template #group.header="{ group }">
-                <td
-                  style="border-left: 5px solid var(--v-primary-base)"
-                  colspan="2">
-                  {{ group }}
-                </td>
-              </template>
-              <template #item="{ item }">
-                <tr>
-                  <template v-for="row in Object.keys(item)">
-                    <td
-                      v-if="row !== 'category'"
-                      :key="row"
-                      class="text-start"
-                      v-html="item[row]"/>
-                  </template>
-                </tr>
-              </template>
-              <template #top>hey</template>
-            </v-data-table>
-          </v-card-text>
-        </v-card>
-      </template>
+      <component
+        :is="types[part.format]"
+        v-for="(part, i) in file.parts.filter(p => p.hidden === undefined)"
+        :key="part.slug + i + 'display'"
+        :file="file"
+        :subject="subject"
+        :part="part"
+        :zoom="zoom"/>
     </v-row>
     <v-container class="contained">
       <v-row>
+        <v-col
+          v-if="file.links !== undefined"
+          cols="12">
+          <p class="display-1 text--primary">
+            <v-icon
+              left
+              color="text">mdi-link-variant-plus</v-icon>
+            Liens pour approfondir
+          </p>
+          <links-list
+            :links="file.links"
+            no-heading
+            background/>
+        </v-col>
         <v-col
           v-if="suggestedFiles.length"
           cols="12">
@@ -292,85 +226,61 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
-import pdf from 'vue-pdf'
 import FilesSlider from '@/views/parts/FilesSlider'
+import LinksList from '@/views/parts/LinksList'
+import PDF from '@/views/types/PDF'
+import Table from '@/views/types/Table'
 
 import formats from '@/data/formats'
-import { dateToText } from '@/utils/parsing'
+import settings from '@/data/settings'
+import { getFileBySlug, getFileById, getFilesBySubject } from '@/data/files'
+import { getSubjectBySlug } from '@/data/subjects'
+
+import dateToText from '@/utils/parsing'
 import { getHexa } from '@/utils/color'
 
 export default {
   name: 'File',
-  components: { pdf, FilesSlider },
+  components: { LinksList, FilesSlider },
   data () {
     return {
       zoom: 90,
-
-      data: [],
-      tableSearch: '',
-
-      src: '',
-      rotate: 0,
-      numPages: undefined,
-      loaded: false,
 
       zoomMenu: false,
       infoDialog: false,
       pinBar: true,
 
-      formats
-    }
-  },
-  mounted() {
-    if (this.defaultFormat === 'pdf') {
-      let url = this.url
-      if (this.$vuetify.theme.dark && this.file.dark !== undefined) url += '--dark'
-      this.src = pdf.createLoadingTask(url + '.pdf')
-
-      this.src.promise.then(pdf => {
-        this.numPages = pdf.numPages
-        this.loaded = true
-      })
-    } else if (this.defaultFormat === 'json') {
-      fetch(this.url + '.json')
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          this.data = data
-        })
-      this.loaded = true
+      types: {
+        'pdf': PDF,
+        'json': Table
+      },
+      formats,
+      settings
     }
   },
   computed: {
     ...mapState(['library']),
-    ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFileById', 'getFilesBySubject']),
     subject() {
-      return this.getSubjectBySlug(this.$route.params.subject)
+      return getSubjectBySlug(this.$route.params.subject)
     },
     subjectFiles() {
-      return this
-        .getFilesBySubject(this.$route.params.subject)
-        .filter(file => file.slug !== this.file.slug)
+      return getFilesBySubject(this.$route.params.subject).filter(file => file.slug !== this.file.slug)
     },
     suggestedFiles() {
       if (this.file.suggestions === undefined) return []
       else {
         return this.file.suggestions.map(suggestion => {
-          return this.getFileById(suggestion)
+          return getFileById(suggestion)
         })
       }
     },
     file() {
-      return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
+      return getFileBySlug(this.$route.params.subject, this.$route.params.file)
     },
     url() {
-      return `/files/${this.subject.slug}/${this.file.slug}/${this.file.slug}`
-    },
-    defaultFormat() {
-      return this.file.formats[0]
+      return `${settings.assetsRoot}/${this.subject.slug}/${this.file.slug}`
     },
 
     isInLibrary() {
@@ -381,10 +291,6 @@ export default {
         subject: this.subject.slug,
         file: this.file.slug
       }
-    },
-
-    style() {
-      return `width: ${this.zoom}vw`
     }
   },
   methods: {

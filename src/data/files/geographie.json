@@ -4,9 +4,18 @@
     "slug": "les-systemes-productifs-en-france",
     "description": "Organisation des espaces productifs au niveau de la France",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "xmind"
+    "parts": [
+      {
+        "name": "Carte mentale",
+        "slug": "les-systemes-productifs-en-france",
+        "format": "pdf"
+      },
+      {
+        "name": "Carte mentale",
+        "slug": "les-systemes-productifs-en-france",
+        "format": "xmind",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-04-08"

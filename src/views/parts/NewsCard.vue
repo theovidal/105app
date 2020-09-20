@@ -20,7 +20,7 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import { dateToText } from '@/utils/parsing'
+import dateToText from '@/utils/parsing'
 
 export default {
   props: {

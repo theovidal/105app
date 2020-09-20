@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/img/icons/icon-512x512.png" alt="105app logo" height="120">
+  <img src="./public/img/icons/icon-512x512.png" alt="105 logo" height="120">
   <h3>Revise the best way</h3>
   <a href="https://105app.exybo.re">Website</a>
   <br>
@@ -29,7 +29,7 @@ French students personally wrote these files that aim to help others during exam
 
 ## 📬 Adding files
 
-If you want to add your own file to 105app, head over to [the adding form](https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677) and complete it!
+If you want to add your own file to 105, head over to [the adding form](https://framaforms.org/soumettre-une-fiche-pour-105app-1593639677) and complete it!
 
 ## 💻 Development
 

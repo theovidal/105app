@@ -4,9 +4,18 @@
     "slug": "structure-des-entites-chimiques",
     "description": "Les molécules organiques, leur nomenclature et leurs groupes caractéristiques",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "structure-des-entites-chimiques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "structure-des-entites-chimiques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-04-11"

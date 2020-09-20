@@ -36,17 +36,16 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-import { getGradient } from '../utils/color'
-import TopBanner from './parts/TopBanner'
+import TopBanner from '@/views/parts/TopBanner'
+
+import { getFilesBySubject } from '@/data/files'
+import { subjects, subjectCategories } from '@/data/subjects'
+import getGradient from '@/utils/color'
 
 export default {
   name: 'Subject',
   components: { TopBanner },
-  computed: {
-    ...mapState(['subjects']),
-    ...mapGetters(['getFilesBySubject', 'subjectCategories'])
-  },
-  methods: { getGradient }
+  data() { return { subjects, subjectCategories } },
+  methods: { getGradient, getFilesBySubject }
 }
 </script>

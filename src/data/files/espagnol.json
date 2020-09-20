@@ -4,9 +4,12 @@
     "slug": "vocabulaire-de-la-description-morale",
     "description": "Mots-clés permettant de décrire moralement une personne.",
     "author": "Théo Vidal",
-    "formats": [
-      "json",
-      "csv"
+    "parts": [
+      {
+        "name": "Tableau",
+        "slug": "vocabulaire-de-la-description-morale",
+        "format": "json"
+      }
     ],
     "level": "2nde",
     "added": "2018-09-27"

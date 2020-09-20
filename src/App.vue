@@ -17,7 +17,7 @@
           <v-row
             align="center"
             justify="center">
-            105<span v-if="!miniDrawer">app</span>
+            105
           </v-row>
         </v-list-item>
         <v-list-item
@@ -32,11 +32,15 @@
           <v-text-field
             v-model="search"
             label="Rechercher..."
+            prepend-inner-icon="mdi-magnify"
             clearable
             outlined
             dense
             hide-details
-            @keydown.enter="gotoSearch"/>
+            @keydown.enter="$router.push({
+              name: 'search',
+              query: { q: search }
+            })"/>
         </v-list-item>
         <v-list-item
           v-for="page in pages"
@@ -81,7 +85,7 @@
               <template #activator="{ on }">
                 <v-list-item-icon
                   class="box-icon"
-                  :style="{ background: getFilesBySubject(subject.slug).length === 0 ? '#bababa' : getGradient(subject.color) }"
+                  :style="{ background: getFilesBySubject(subject.slug).length ? getGradient(subject.color) : '#bababa' }"
                   v-on="on">
                   <v-icon medium>{{ subject.icon }}</v-icon>
                 </v-list-item-icon>
@@ -163,9 +167,10 @@
 </template>
 
 <script>
-import subjects from '@/data/subjects'
-import { getGradient } from '@/utils/color'
-import { mapGetters } from 'vuex'
+import { getFilesBySubject } from '@/data/files'
+import { subjects, subjectCategories } from '@/data/subjects'
+
+import getGradient from '@/utils/color'
 
 export default {
   name: 'App',
@@ -178,20 +183,11 @@ export default {
       search: '',
       miniDrawer: this.$vuetify.breakpoint.mdOnly,
 
-      subjects
-    }
-  },
-  methods: {
-    getGradient,
-    gotoSearch () {
-      this.$router.push({
-        name: 'search',
-        query: { q: this.search }
-      })
+      subjects,
+      subjectCategories
     }
   },
   computed: {
-    ...mapGetters(['getFilesBySubject', 'subjectCategories']),
     mobilePages() {
       return [
         { name: 'Accueil', icon: 'mdi-home', link: '/' },
@@ -201,13 +197,14 @@ export default {
       ]
     }
   },
+  methods: { getGradient, getFilesBySubject },
   metaInfo() {
     return {
-      title: "105 - L'appli",
+      title: "105",
       meta: [
         {
           property: 'og:title',
-          content: "105 - L'appli"
+          content: "105"
         },
         {
           property: 'og:description',

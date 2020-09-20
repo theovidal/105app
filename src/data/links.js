@@ -1,23 +1,14 @@
-const links = {
-  general: [
-    { type: 'youtube', name: 'Mathrix', description: 'Cours en tout genre', value: 'https://www.youtube.com/c/Mathrix' },
-    { type: 'youtube', name: 'Les bons profs', description: 'Cours et méthodes', value: 'https://www.youtube.com/user/lesbonsprofs' }
-  ],
-  maths: [
-    { type: 'youtube', name: 'Hedacademy', description: 'Leçons et curiosités', value: 'https://www.youtube.com/channel/UC8SRYHgGMqAYZehYdznaqvQ' },
-    { type: 'web', name: 'jaicompris.com', description: '[Spécialité] Fiches et vidéos issues de manuels', value: 'http://www.jaicompris.com/lycee/math/terminaleS-math.php' },
-    { type: 'web', name: 'jaicompris.com', description: '[Expertes] Fiches et vidéos issues de manuels', value: 'http://www.jaicompris.com/lycee/math/option-maths-expertes.php' },
-    { type: 'web', name: 'Site de m@ths', description: 'Cours, devoirs et calcul mental', value: 'http://sitedemaths.fr/index.php' }
-  ],
-  physique: [
-    { type: 'youtube', name: 'DIMENSION', description: 'Vulgarisation scientifique', value: 'https://www.youtube.com/c/DIMENSI0N' },
-    { type: 'youtube', name: 'ScienceClic', description: 'Vulgarisation avancée', value: 'https://www.youtube.com/c/ScienceClic' }
-  ]
-}
+const links = [
+  { type: 'web', name: 'LeLivreScolaire.fr', description: 'Manuels scolaires en ligne', value: 'https://www.lelivrescolaire.fr/' },
+  { type: 'youtube', name: 'Mathrix', description: 'Cours en tout genre', value: 'https://www.youtube.com/c/Mathrix' },
+  { type: 'youtube', name: 'Les bons profs', description: 'Cours et méthodes', value: 'https://www.youtube.com/user/lesbonsprofs' },
+  { type: 'youtube', name: "L'antisèche", description: 'Cours et préparations aux épreuves', value: 'https://www.youtube.com/channel/UCeOp9CWBaW2tVIBAzCobzow' }
+]
 
 const types = {
   'youtube': { name: 'Chaîne YouTube', icon: 'mdi-youtube', color: [229, 57, 53] },
-  'web': { name: 'Lien Internet', icon: 'mdi-web', color: [66, 165, 245] }
+  'web': { name: 'Lien Internet', icon: 'mdi-web', color: [66, 165, 245] },
+  'video': { name: 'Vidéo', icon: 'mdi-video-outline', color: [238, 152, 13] }
 }
 
 export default links

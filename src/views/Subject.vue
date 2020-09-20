@@ -10,14 +10,13 @@
         :subject="subject">
         <template #prepend>
           <v-col
-            v-if="hasLinks"
+            v-if="subject.links !== undefined"
             cols="12"
             md="6"
             lg="4"
             xl="3">
-            <h2>Liens utiles</h2>
             <links-list
-              :category="subject.slug"
+              :links="subject.links"
               background/>
           </v-col>
         </template>
@@ -27,28 +26,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 import TopBanner from '@/views/parts/TopBanner'
 import FilesGrid from '@/views/parts/FilesGrid'
 import LinksList from '@/views/parts/LinksList'
 
+import { getSubjectBySlug } from '@/data/subjects'
+import { getFilesBySubject } from '@/data/files'
+
 import { getHexa } from '@/utils/color'
-import links from '@/data/links'
 
 export default {
   name: 'Subject',
   components: { LinksList, FilesGrid, TopBanner },
   computed: {
-    ...mapGetters(['getSubjectBySlug', 'getFilesBySubject']),
     subject() {
-      return this.getSubjectBySlug(this.$route.params.subject)
+      return getSubjectBySlug(this.$route.params.subject)
     },
     files() {
-      return this.getFilesBySubject(this.$route.params.subject)
-    },
-    hasLinks() {
-      return links[this.subject.slug] !== undefined
+      return getFilesBySubject(this.$route.params.subject)
     }
   },
   metaInfo () {

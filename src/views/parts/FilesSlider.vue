@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import FileCard from './FileCard'
+import { getSubjectBySlug } from '@/data/subjects'
 
 export default {
   name: 'FilesSlider',
@@ -31,6 +31,6 @@ export default {
     displaySubject: Boolean,
     useHref: Boolean
   },
-  computed: mapGetters(['getSubjectBySlug'])
+  methods: { getSubjectBySlug }
 }
 </script>

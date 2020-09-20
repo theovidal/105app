@@ -7,9 +7,32 @@
     "suggestions": [
       "si/comment-evaluer-lefficacite-energetique-dun-systeme"
     ],
-    "formats": [
-      "pdf",
-      "docx"
+    "links": [
+      {
+        "type": "video",
+        "name": "Théorème de l'énergie cinétique",
+        "description": "Vidéo de cours (Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C14_VID_Theoreme-de-l-energie-cinetiquemp4"
+      },
+      {
+        "type": "video",
+        "name": "Variation d'énergie mécanique",
+        "description": "Vidéo de cours (Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C14_VID_Variation_energie_mecamp4"
+      }
+    ],
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "aspect-energetique-des-phenomenes-mecaniques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "aspect-energetique-des-phenomenes-mecaniques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-06-03"
@@ -19,9 +42,26 @@
     "slug": "les-ondes-mecaniques",
     "description": "Le phénomène d'onde mécanique progressive, sa mesure et sa double périodicité",
     "author": "Théo Vidal",
-    "formats": [
-      "pdf",
-      "docx"
+    "links": [
+      {
+        "type": "video",
+        "name": "Double périodicité",
+        "description": "Vidéo de cours (manuel Hachette Éducation)",
+        "value": "https://lycee.hachette-education.com/pc/1re/#C15_VID_double-periodicitemp4"
+      }
+    ],
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "les-ondes-mecaniques",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "les-ondes-mecaniques",
+        "format": "docx",
+        "hidden": true
+      }
     ],
     "level": "1ère",
     "added": "2020-06-09"

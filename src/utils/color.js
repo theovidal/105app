@@ -34,3 +34,4 @@ export {
   getLighter2,
   getGradient
 }
+export default getGradient
