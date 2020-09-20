@@ -60,8 +60,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 import TopBanner from '@/views/parts/TopBanner'
 import FilesGrid from '@/views/parts/FilesGrid'
+
+import { getSubjectBySlug } from '@/data/subjects'
 
 export default {
   name: 'Library',
@@ -71,7 +74,7 @@ export default {
     }
   },
   components: { FilesGrid, TopBanner },
-  computed: mapGetters(['getLibraryFiles', 'getSubjectBySlug']),
-  methods: mapActions(['removeFileFromLibrary'])
+  computed: mapGetters(['getLibraryFiles']),
+  methods: { ...mapActions(['removeFileFromLibrary']), getSubjectBySlug }
 }
 </script>

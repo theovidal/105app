@@ -155,8 +155,8 @@
           </template>
           <v-list>
             <v-list-item
-              v-for="part in file.parts.filter(p => p.downloadable !== undefined)"
-              :key="part.slug"
+              v-for="part in file.parts.filter(p => p.locked === undefined)"
+              :key="part.slug + part.format + 'download'"
               :href="`${url}/${part.slug}.${part.format}`"
               target="_blank">
               <v-list-item-icon>
@@ -171,8 +171,8 @@
     <v-row justify="center">
       <component
         :is="types[part.format]"
-        v-for="(part, i) in file.parts.filter(p => p.hide === undefined)"
-        :key="i"
+        v-for="(part, i) in file.parts.filter(p => p.hidden === undefined)"
+        :key="part.slug + i + 'display'"
         :file="file"
         :subject="subject"
         :part="part"
@@ -226,7 +226,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import FilesSlider from '@/views/parts/FilesSlider'
 import LinksList from '@/views/parts/LinksList'
@@ -235,6 +235,9 @@ import Table from '@/views/types/Table'
 
 import formats from '@/data/formats'
 import settings from '@/data/settings'
+import { getFileBySlug, getFileById, getFilesBySubject } from '@/data/files'
+import { getSubjectBySlug } from '@/data/subjects'
+
 import dateToText from '@/utils/parsing'
 import { getHexa } from '@/utils/color'
 
@@ -259,25 +262,22 @@ export default {
   },
   computed: {
     ...mapState(['library']),
-    ...mapGetters(['getSubjectBySlug', 'getFileBySlug', 'getFileById', 'getFilesBySubject']),
     subject() {
-      return this.getSubjectBySlug(this.$route.params.subject)
+      return getSubjectBySlug(this.$route.params.subject)
     },
     subjectFiles() {
-      return this
-        .getFilesBySubject(this.$route.params.subject)
-        .filter(file => file.slug !== this.file.slug)
+      return getFilesBySubject(this.$route.params.subject).filter(file => file.slug !== this.file.slug)
     },
     suggestedFiles() {
       if (this.file.suggestions === undefined) return []
       else {
         return this.file.suggestions.map(suggestion => {
-          return this.getFileById(suggestion)
+          return getFileById(suggestion)
         })
       }
     },
     file() {
-      return this.getFileBySlug(this.$route.params.subject, this.$route.params.file)
+      return getFileBySlug(this.$route.params.subject, this.$route.params.file)
     },
     url() {
       return `${settings.assetsRoot}/${this.subject.slug}/${this.file.slug}`

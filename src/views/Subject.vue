@@ -26,11 +26,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 import TopBanner from '@/views/parts/TopBanner'
 import FilesGrid from '@/views/parts/FilesGrid'
 import LinksList from '@/views/parts/LinksList'
+
+import { getSubjectBySlug } from '@/data/subjects'
+import { getFilesBySubject } from '@/data/files'
 
 import { getHexa } from '@/utils/color'
 
@@ -38,12 +39,11 @@ export default {
   name: 'Subject',
   components: { LinksList, FilesGrid, TopBanner },
   computed: {
-    ...mapGetters(['getSubjectBySlug', 'getFilesBySubject']),
     subject() {
-      return this.getSubjectBySlug(this.$route.params.subject)
+      return getSubjectBySlug(this.$route.params.subject)
     },
     files() {
-      return this.getFilesBySubject(this.$route.params.subject)
+      return getFilesBySubject(this.$route.params.subject)
     }
   },
   metaInfo () {

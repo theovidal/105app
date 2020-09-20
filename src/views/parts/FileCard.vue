@@ -24,9 +24,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { getHexa } from '@/utils/color'
 import dateToText from '@/utils/parsing'
+
+import { getSubjectBySlug } from '@/data/subjects'
 
 export default {
   name: 'FileCard',
@@ -41,7 +42,6 @@ export default {
     useHref: Boolean
   },
   computed: {
-    ...mapGetters(['getSubjectBySlug']),
     url() {
       return `/subjects/${this.file.subject}/${this.file.slug}`
     },
@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     dateToText,
-    getHexa
+    getHexa,
+    getSubjectBySlug
   }
 }
 </script>

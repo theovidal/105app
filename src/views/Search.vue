@@ -64,10 +64,10 @@
           </v-row>
         </v-col>
         <illustration
-          v-if="query === ''"
+          v-if="!query.length"
           image="/img/illustrations/search.svg"
           title="Recherchez des fiches"
-          subtitle="Commencez à taper un mot-clé et les fiches correspondantes s'afficheront.<br>Vous pouvez aussi définir quelles matières sont concernées par votre recherche."/>
+          subtitle="Commencez à taper un mot-clé et les fiches correspondantes s'afficheront. Vous pouvez aussi définir quelles matières sont concernées par votre recherche.<br><i>Pro-Astuce: les expressions régulières (RegEx) sont supportées</i>"/>
         <illustration
           v-else-if="!files.length"
           image="/img/illustrations/not-found.svg"
@@ -93,9 +93,11 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
 import FileCard from '@/views/parts/FileCard'
+
 import { getGradient, getHexa } from '@/utils/color'
+import { subjects as defaultSubjects, getSubjectBySlug } from '@/data/subjects'
+import { getFilesByQuery } from '@/data/files'
 
 export default {
   name: 'Search',
@@ -105,7 +107,8 @@ export default {
       query: '',
       selection: [],
 
-      loaded: false
+      loaded: false,
+      defaultSubjects
     }
   },
   mounted() {
@@ -118,12 +121,8 @@ export default {
     this.loaded = true
   },
   computed: {
-    ...mapState({
-      defaultSubjects: 'subjects'
-    }),
-    ...mapGetters(['getFilesByQuery', 'getSubjectBySlug']),
     files() {
-      return this.getFilesByQuery(this.query, this.selection)
+      return getFilesByQuery(this.query, this.selection)
     },
     url() {
       let query = this.query
@@ -131,7 +130,7 @@ export default {
       return `?q=${query}&s=${subjects}`
     }
   },
-  methods: { getGradient, getHexa },
+  methods: { getGradient, getHexa, getSubjectBySlug },
   metaInfo() {
     let title = this.query.length ? `Résultat de recherche : ${this.query}` : 'Recherche'
     return {

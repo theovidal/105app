@@ -32,6 +32,7 @@
           <v-text-field
             v-model="search"
             label="Rechercher..."
+            prepend-inner-icon="mdi-magnify"
             clearable
             outlined
             dense
@@ -166,9 +167,10 @@
 </template>
 
 <script>
-import subjects from '@/data/subjects'
+import { getFilesBySubject } from '@/data/files'
+import { subjects, subjectCategories } from '@/data/subjects'
+
 import getGradient from '@/utils/color'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
@@ -181,12 +183,11 @@ export default {
       search: '',
       miniDrawer: this.$vuetify.breakpoint.mdOnly,
 
-      subjects
+      subjects,
+      subjectCategories
     }
   },
-  methods: { getGradient },
   computed: {
-    ...mapGetters(['getFilesBySubject', 'subjectCategories']),
     mobilePages() {
       return [
         { name: 'Accueil', icon: 'mdi-home', link: '/' },
@@ -196,13 +197,14 @@ export default {
       ]
     }
   },
+  methods: { getGradient, getFilesBySubject },
   metaInfo() {
     return {
-      title: "105 - L'appli",
+      title: "105",
       meta: [
         {
           property: 'og:title',
-          content: "105 - L'appli"
+          content: "105"
         },
         {
           property: 'og:description',

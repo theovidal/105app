@@ -111,7 +111,7 @@
           </p>
           <v-row>
             <v-col
-              v-for="file in getLastFiles"
+              v-for="file in lastFiles"
               :key="file.slug"
               cols="12"
               sm="6"
@@ -146,26 +146,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 import FileCard from '@/views/parts/FileCard'
 import LinksList from '@/views/parts/LinksList'
 import NewsCard from '@/views/parts/NewsCard'
 
-import subjects from '@/data/subjects'
 import news from '@/data/news'
 import links from '@/data/links'
 import tips from '@/data/tips'
-import getGradient from '@/utils/color'
+import { subjects, getSubjectBySlug } from '@/data/subjects'
+import { lastFiles } from '@/data/files'
 
+import getGradient from '@/utils/color'
 
 export default {
   name: 'Home',
   components: { FileCard, LinksList, NewsCard },
   data () {
-    return { subjects, news, links, tips }
+    return { subjects, news, links, tips, lastFiles }
   },
-  computed: mapGetters(['getLastFiles', 'getSubjectBySlug']),
-  methods: { getGradient }
+  methods: { getGradient, getSubjectBySlug }
 }
 </script>

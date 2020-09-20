@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import FileCard from './FileCard'
+import { getSubjectBySlug } from '@/data/subjects'
 
 export default {
   components: { FileCard },
@@ -36,6 +36,6 @@ export default {
     readonly: Boolean,
     displaySubject: Boolean
   },
-  computed: mapGetters(['getSubjectBySlug'])
+  methods: { getSubjectBySlug }
 }
 </script>
