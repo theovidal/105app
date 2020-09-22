@@ -1,0 +1,27 @@
+[
+  {
+    "name": "L'impact de la crise de 1929 : déséquilibres économiques et sociaux",
+    "slug": "la-crise-de-1929",
+    "description": "Comment la crise de 1929 provoque-t-elle de profonds déséquilibres aux États-Unis comme dans le reste du monde",
+    "author": "Théo Vidal",
+    "parts": [
+      {
+        "name": "Le krach boursier",
+        "slug": "krach-boursier",
+        "format": "png"
+      },
+      {
+        "name": "Les solutions apportées à la crise",
+        "slug": "solutions",
+        "format": "png"
+      },
+      {
+        "name": "Dates et définitions",
+        "slug": "dates-et-definitions",
+        "format": "md"
+      }
+    ],
+    "level": "Terminale",
+    "added": "2020-09-22"
+  }
+]
