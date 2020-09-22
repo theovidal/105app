@@ -230,8 +230,10 @@ import { mapState, mapActions } from 'vuex'
 
 import FilesSlider from '@/views/parts/FilesSlider'
 import LinksList from '@/views/parts/LinksList'
+import ImagePart from '@/views/types/ImagePart'
 import PDF from '@/views/types/PDF'
 import Table from '@/views/types/Table'
+import TextPart from '@/views/types/TextPart'
 
 import formats from '@/data/formats'
 import settings from '@/data/settings'
@@ -254,7 +256,10 @@ export default {
 
       types: {
         'pdf': PDF,
-        'json': Table
+        'json': Table,
+        'md': TextPart,
+        'svg': ImagePart,
+        'png': ImagePart
       },
       formats,
       settings
