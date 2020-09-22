@@ -3,6 +3,9 @@
   <h3>Revise the best way</h3>
   <a href="https://105app.exybo.re">Website</a>
   <br>
+  <a href="https://app.netlify.com/sites/105app/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/00165e74-2ef0-4f96-99d2-2fae4fd3b3ef/deploy-status" slt="Netlify status">
+  </a>
   <a href="https://github.com/theovidal/105app/blob/master/.LICENSE">
     <img src="https://img.shields.io/github/license/theovidal/105app" alt="License"/>
   </a>
