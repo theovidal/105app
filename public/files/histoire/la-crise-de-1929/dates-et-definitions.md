@@ -16,8 +16,6 @@ Arrivée au pouvoir de **Vargas au Brésil** et instauration d’une dictature p
 
 **Accords d’Ottawa** instaurant la préférence impériale au sein du Commonwealth
 
-**Arrivée de la crise en France**, qui sera répondue par le Front Populaire en 1936
-
 ## 1933
 
 Arrivée au pouvoir du **parti Nazi en Allemagne**
@@ -57,12 +55,12 @@ Victoire du **Front Populaire**, alliance électorale de gauche, aux élections 
 
 **Libéralisme** : doctrine économique préconisant une faible intervention des gouvernements dans l’économie, et donc prônant la libre entreprise
 
-**Austérité** : ensemble de mesures mises en place par l’État qui passe notamment par des impôts plus élevés et moins de dépenses.
+**Austérité** : ensemble de mesures mises en place par l’État pour réduire l'ensemble des revenus disponibles, qui passe notamment par des impôts plus élevés et moins de dépenses
 
 
 **New Deal** : ensemble de mesures économiques, sociales et financières mises en place par Franklin D Roosevelt pour endiguer les effets de la Grande Dépression
 
-**Planification _(au niveau d’un État)_** : organisation d'un programme économique avec ses objectifs et ses moyens pour plusieurs années à venir
+**Planification** _(au niveau d’un État)_ : organisation d'un programme économique avec ses objectifs et ses moyens pour plusieurs années à venir
 
 **État-Providence** : État qui intervient de façon importante dans le domaine économique et social, afin d’assurer le bien-être de ses citoyens
 
