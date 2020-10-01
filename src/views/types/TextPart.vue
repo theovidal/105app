@@ -1,9 +1,7 @@
 <template>
-  <v-card :width="zoom + '%'">
-    <v-card-text>
-      <vue-markdown class="md">{{ content }}</vue-markdown>
-    </v-card-text>
-  </v-card>
+  <v-container>
+    <vue-markdown class="md">{{ content }}</vue-markdown>
+  </v-container>
 </template>
 
 <script>
@@ -30,11 +28,27 @@ export default {
 <style lang="stylus">
 .md
   color: var(--v-text-base) !important
+  font-family: 'Calibri', 'Roboto'
 
   p
-    font-size: 15.5px
+    font-size: 16.5px
     margin-bottom: 8px
   h1
     text-align: center
-    margin-bottom: 10px
+    font-size: 37px
+  h2
+    color: #808080
+    font-size: 18px
+    text-align: center
+  h3
+    color: var(--v-secondary-base) !important
+    font-size: 25px
+    margin-top: 12px
+  h4
+    color: var(--v-secondary-base) !important
+    font-size: 19px
+
+  h1, h2, h3, h4
+    font-family: 'Calibri', 'Roboto'
+    font-weight: normal
 </style>

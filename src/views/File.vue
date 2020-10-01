@@ -168,7 +168,9 @@
         </v-menu>
       </template>
     </v-app-bar>
-    <v-row justify="center">
+    <v-row
+      justify="center"
+      class="ma-0">
       <component
         :is="types[part.format]"
         v-for="(part, i) in file.parts.filter(p => p.hidden === undefined)"
