@@ -9,7 +9,7 @@
             <v-col cols="12">
               <card gradient>
                 <template #title>
-                  <span class="black--text">105 &mdash; Bienvenue!</span>
+                  <span class="black--text">105app.fr &mdash; Bienvenue!</span>
                 </template>
                 <v-img
                   width="50%"
@@ -23,7 +23,7 @@
             </v-col>
             <v-col cols="12">
               <card>
-                <template #title>Pour démarrer...</template>
+                <template #title>Pour démarrer</template>
                 <v-expansion-panels
                   accordion
                   flat>

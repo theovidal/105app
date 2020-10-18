@@ -189,7 +189,7 @@
             <v-icon
               left
               color="text">mdi-link-variant-plus</v-icon>
-            Liens pour approfondir
+            Lien{{ file.links.length > 1 ? 's' : '' }} pour approfondir
           </p>
           <links-list
             :links="file.links"
@@ -307,7 +307,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: `${this.subject.name} : ${this.file.name} | 105`,
+      title: `${this.subject.name} : ${this.file.name} | 105app`,
       meta: [
         {
           property: 'og:title',
@@ -319,7 +319,11 @@ export default {
         },
         {
           property: 'og:url',
-          content: `https://105app.exybo.re/subjects/${this.subject.slug}/${this.file.slug}`
+          content: `https://105app.fr/subjects/${this.subject.slug}/${this.file.slug}`
+        },
+        {
+          name: 'author',
+          content: this.file.author
         },
         {
           name: 'theme-color',

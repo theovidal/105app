@@ -1,5 +1,12 @@
 <template>
   <v-main>
+    <v-snackbar
+      v-model="copySnackbar"
+      timeout="4000"
+      top
+      right>
+      Lien copié dans le presse papier!
+    </v-snackbar>
     <v-container class="contained">
       <v-row>
         <v-col cols="12">
@@ -19,9 +26,9 @@
                     bottom>
                     <template #activator="{ on }">
                       <v-btn
-                        :href="url"
                         icon
-                        v-on="on">
+                        v-on="on"
+                        @click="copyURL">
                         <v-icon>mdi-link</v-icon>
                       </v-btn>
                     </template>
@@ -108,6 +115,7 @@ export default {
       selection: [],
 
       loaded: false,
+      copySnackbar: false,
       defaultSubjects
     }
   },
@@ -127,14 +135,20 @@ export default {
     url() {
       let query = this.query
       let subjects = this.selection.length ? this.selection.join(',') : 'all'
-      return `?q=${query}&s=${subjects}`
+      return `https://105app.fr/search?q=${query}&s=${subjects}`
     }
   },
-  methods: { getGradient, getHexa, getSubjectBySlug },
+  methods: {
+    getGradient, getHexa, getSubjectBySlug,
+    copyURL() {
+      navigator.clipboard.writeText(this.url)
+      this.copySnackbar = true
+    }
+  },
   metaInfo() {
     let title = this.query.length ? `Résultat de recherche : ${this.query}` : 'Recherche'
     return {
-      title: `${title} | 105`
+      title: `${title} | 105app`
     }
   }
 }

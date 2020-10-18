@@ -48,7 +48,7 @@ export default {
   },
   metaInfo () {
     return {
-      title:`${this.subject.name} : Toutes les fiches | 105`,
+      title:`${this.subject.name} : Toutes les fiches | 105app`,
       meta: [
         {
           property: 'og:title',
@@ -60,7 +60,7 @@ export default {
         },
         {
           property: 'og:url',
-          content: `https://105app.exybo.re/subjects/${this.subject.slug}`
+          content: `https://105app.fr/subjects/${this.subject.slug}`
         },
         {
           name: 'theme-color',

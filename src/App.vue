@@ -200,11 +200,11 @@ export default {
   methods: { getGradient, getFilesBySubject },
   metaInfo() {
     return {
-      title: "105",
+      title: '105app',
       meta: [
         {
           property: 'og:title',
-          content: "105"
+          content: "105app"
         },
         {
           property: 'og:description',
@@ -212,7 +212,7 @@ export default {
         },
         {
           property: 'og:url',
-          content: 'https://105app.exybo.re'
+          content: 'https://105app.fr'
         },
         {
           name: 'theme-color',
