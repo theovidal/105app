@@ -97,5 +97,3 @@ If you want to customize the build configuration, check the [Configuration Refer
 ## 🔐 License
 
 This project is under the [GNU GPL v3](./LICENSE) license.
-
-**WARNING : this license is here as a placeholder for your project : the template itself is completely free, without any license !**
