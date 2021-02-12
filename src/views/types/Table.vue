@@ -14,7 +14,7 @@
         :items="data.items"
         :search="tableSearch"
         :group-by="data.categorised === undefined ? [] : 'category'">
-        <template #group.header="{ group }">
+        <template #[`group.header`]="{ group }">
           <td
             style="border-left: 5px solid var(--v-primary-base)"
             colspan="2">

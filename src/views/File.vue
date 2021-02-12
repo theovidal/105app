@@ -236,6 +236,7 @@ import ImagePart from '@/views/types/ImagePart'
 import PDF from '@/views/types/PDF'
 import Table from '@/views/types/Table'
 import TextPart from '@/views/types/TextPart'
+import Web from '@/views/types/Web'
 
 import formats from '@/data/formats'
 import settings from '@/data/settings'
@@ -261,7 +262,8 @@ export default {
         'json': Table,
         'md': TextPart,
         'svg': ImagePart,
-        'png': ImagePart
+        'png': ImagePart,
+        'web': Web,
       },
       formats,
       settings

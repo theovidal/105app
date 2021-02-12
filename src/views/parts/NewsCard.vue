@@ -1,15 +1,12 @@
 <template>
   <card gradient-border>
-    <template
-      v-if="post.subtitle !== undefined"
-      #title-prepend>
-      {{ post.subtitle }}
+    <template #title-prepend>
+      <template v-if="post.subtitle !== undefined">{{ post.subtitle }}</template>
+      <v-img
+        width="100%"
+        :src="`/news/${post.slug}/${post.slug}.${post.illustration}`"
+        alt="Home"/>
     </template>
-    <v-img
-      #title-prepend
-      width="100%"
-      :src="`/news/${post.slug}/${post.slug}.${post.illustration}`"
-      alt="Home"/>
     <template #title>
       {{ post.title }}<br>
       <span class="subtitle-2">{{ dateToText(post.date) }}</span>

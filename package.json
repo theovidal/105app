@@ -18,8 +18,8 @@
   "maintainers": [
     {
       "name": "Théo Vidal",
-      "email": "exybore@becauseofprog.fr",
-      "web": "https://exybore.becauseofprog.fr"
+      "email": "theo@becauseofprog.fr",
+      "web": "https://github.com/theovidal"
     }
   ],
   "repositories": [
@@ -58,7 +58,7 @@
     "eslint": "^7.16.0",
     "eslint-plugin-vue": "^7.4.0",
     "stylus": "^0.54.8",
-    "stylus-loader": "^4.3.1",
+    "stylus-loader": "^3.0.2",
     "vue-cli-plugin-vuetify": "^2.0.9",
     "vue-template-compiler": "^2.6.12"
   }
