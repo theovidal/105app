@@ -19,5 +19,36 @@
     ],
     "level": "1ère",
     "added": "2020-04-08"
+  },
+  {
+    "name": "Mers et océans, vecteurs essentiels de la mondialisation",
+    "slug": "mers-et-oceans-vecteurs-essentiels-de-la-mondialisation",
+    "description": "Comment les mers et océans représentent-ils aujourd'hui de nouveaux fronts stratégiques de la mondialisation ?",
+    "author": "Théo Vidal",
+    "parts": [
+      {
+        "name": "Carte mentale en ligne",
+        "slug": "https://www.xmind.net/m/7RBPpW/",
+        "format": "web",
+        "meta": {
+          "description": "Retrouvez cette carte mentale sur **l'éditeur XMind en ligne** pour plus de détails et de flexibilité.",
+          "icon": "/img/xmind.png"
+        },
+        "locked": true
+      },
+      {
+        "name": "Carte mentale",
+        "slug": "mers-et-oceans-vecteurs-essentiels-de-la-mondialisation",
+        "format": "pdf"
+      },
+      {
+        "name": "Carte mentale",
+        "slug": "mers-et-oceans-vecteurs-essentiels-de-la-mondialisation",
+        "format": "xmind",
+        "hidden": true
+      }
+    ],
+    "level": "Terminale",
+    "added": "2021-02-12"
   }
 ]
