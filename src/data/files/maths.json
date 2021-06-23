@@ -39,7 +39,28 @@
         "hidden": true
       }
     ],
-    "level": "1ère/Terminale",
+    "level": "Terminale",
     "added": "2020-07-01"
+  },
+  {
+    "name": "Trigonométrie",
+    "slug": "trigonometrie",
+    "description": "Résolution d'équations, propriétés des fonctions cosinus et sinus, formules",
+    "author": "Théo Vidal",
+    "parts": [
+      {
+        "name": "Fiche",
+        "slug": "trigonometrie",
+        "format": "pdf"
+      },
+      {
+        "name": "Fiche",
+        "slug": "trigonometrie",
+        "format": "docx",
+        "hidden": true
+      }
+    ],
+    "level": "Terminale",
+    "added": "2021-06-23"
   }
 ]
