@@ -134,16 +134,23 @@ export default {
     },
     url() {
       let query = this.query
-      let subjects = this.selection.length ? this.selection.join(',') : 'all'
-      return `https://105app.fr/search?q=${query}&s=${subjects}`
+      let subjects = this.selection.length ? `&s=${this.selection.join(',')}` : ''
+      return `?q=${query}${subjects}`
     }
   },
   methods: {
     getGradient, getHexa, getSubjectBySlug,
     copyURL() {
-      navigator.clipboard.writeText(this.url)
+      navigator.clipboard.writeText(window.origin + window.pathname + this.url)
       this.copySnackbar = true
+    },
+    updateURL() {
+      history.pushState({}, "", this.url)
     }
+  },
+  watch: {
+    query() { this.updateURL() },
+    selection() { this.updateURL() }
   },
   metaInfo() {
     let title = this.query.length ? `Résultat de recherche : ${this.query}` : 'Recherche'
